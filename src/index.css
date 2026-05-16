@@ -1,0 +1,22 @@
+:root {
+  font-family: "Courier New", monospace;
+  color: #111111;
+  background: #faf9f5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(180deg, #ffffff 0%, #faf9f5 62%, #ffffff 100%);
+}
+
+img {
+  max-width: 100%;
+}
