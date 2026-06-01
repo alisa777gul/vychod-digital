@@ -1,9 +1,18 @@
 import styles from "./Button.module.css";
 
-export default function Button({ href, children, variant = "brush" }) {
+export default function Button({
+  href,
+  children,
+  variant = "brush",
+  ...props
+}) {
   if (variant === "outline") {
     return (
-      <a className={`${styles.button} ${styles.outlineButton}`} href={href}>
+      <a
+        className={`${styles.button} ${styles.outlineButton}`}
+        href={href}
+        {...props}
+      >
         <svg
           className={styles.outlineSvg}
           viewBox="0 0 220 64"
@@ -32,7 +41,11 @@ export default function Button({ href, children, variant = "brush" }) {
   }
 
   return (
-    <a className={`${styles.button} ${styles.brushButton}`} href={href}>
+    <a
+      className={`${styles.button} ${styles.brushButton}`}
+      href={href}
+      {...props}
+    >
       <svg
         className={styles.brush}
         viewBox="0 0 220 64"
