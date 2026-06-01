@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import logo from "../../assets/vychoddigital.png";
+import logo from "../../../public/favicon.svg";
 import Button from "../Button/Button";
 import styles from "./Header.module.css";
 
@@ -43,15 +43,16 @@ export default function Header() {
       </a>
 
       <button
-        className={`${styles.burger} ${isMenuOpen ? styles.burgerOpen : ""}`}
+        className={styles.burger}
         type="button"
         aria-label={isMenuOpen ? "Zatvoriť menu" : "Otvoriť menu"}
         aria-expanded={isMenuOpen}
+        aria-controls="main-menu"
         onClick={() => setIsMenuOpen((current) => !current)}
       >
-        <span></span>
-        <span></span>
-        <span></span>
+        <svg className={styles.burgerIcon} aria-hidden="true">
+          <use href={`/icons.svg#${isMenuOpen ? "icon-close" : "icon-menu"}`} />
+        </svg>
       </button>
 
       {isMenuOpen && (
@@ -63,7 +64,10 @@ export default function Header() {
         />
       )}
 
-      <div className={`${styles.menu} ${isMenuOpen ? styles.menuOpen : ""}`}>
+      <div
+        className={`${styles.menu} ${isMenuOpen ? styles.menuOpen : ""}`}
+        id="main-menu"
+      >
         <nav className={styles.nav} aria-label="Hlavná navigácia">
           {navItems.map((item) => (
             <a key={item.href} href={item.href} onClick={closeMenu}>

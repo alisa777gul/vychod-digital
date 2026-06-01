@@ -1,4 +1,5 @@
 import Button from "../Button/Button";
+import heroImage from "../../assets/hero-image.png";
 import styles from "./Hero.module.css";
 
 export default function Hero() {
@@ -6,7 +7,9 @@ export default function Hero() {
     <section className={styles.hero} id="home">
       <div className={styles.content}>
         <h1>
-          Digitálne riešenia, ktoré menia návštevníkov
+          Digitálne riešenia, <br />
+          ktoré menia návštevníkov
+          <br />
           <span> na zákazníkov.</span>
         </h1>
 
@@ -23,24 +26,8 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className={styles.visual} aria-hidden="true">
-        <div className={styles.circle}></div>
-
-        <div className={styles.laptop}>
-          <div className={styles.screen}>
-            <div className={styles.box}></div>
-
-            <div className={styles.lines}>
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-          </div>
-
-          <div className={styles.base}></div>
-        </div>
-
-        <span className={styles.arrow}>↗</span>
+      <div className={styles.visual}>
+        <img src={heroImage} alt="Notebook" />
       </div>
     </section>
   );
