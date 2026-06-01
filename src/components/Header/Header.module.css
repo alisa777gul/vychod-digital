@@ -73,9 +73,9 @@
   display: inline-grid;
   width: 46px;
   height: 46px;
-  place-items: center;
+  place-content: center;
+  gap: 5px;
   padding: 0;
-  color: #111111;
   background: #ffffff;
   border: 2px solid #111111;
   box-shadow: 4px 4px 0 #df0014;
@@ -103,10 +103,33 @@
   outline-offset: 5px;
 }
 
-.burgerIcon {
+.burgerLine {
   display: block;
-  width: 26px;
-  height: 26px;
+  width: 24px;
+  height: 2px;
+  background: #111111;
+  border-radius: 999px;
+  transition:
+    transform 0.22s ease,
+    opacity 0.16s ease,
+    background 0.22s ease;
+}
+
+.burgerLine:nth-child(2) {
+  background: #df0014;
+}
+
+.burgerOpen .burgerLine:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.burgerOpen .burgerLine:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.burgerOpen .burgerLine:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
 }
 
 .menu {

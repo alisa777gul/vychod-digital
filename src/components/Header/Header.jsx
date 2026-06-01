@@ -34,13 +34,12 @@ export default function Header() {
     if (!section) return;
 
     const headerHeight = headerRef.current?.offsetHeight || 0;
-    const top =
-      section.getBoundingClientRect().top + window.scrollY - headerHeight - 18;
+    const sectionTop = section.getBoundingClientRect().top + window.scrollY;
 
     closeMenu();
 
     window.scrollTo({
-      top,
+      top: sectionTop - headerHeight - 18,
       behavior: "smooth",
     });
   };
@@ -85,22 +84,16 @@ export default function Header() {
         </a>
 
         <button
-          className={styles.burger}
+          className={`${styles.burger} ${isMenuOpen ? styles.burgerOpen : ""}`}
           type="button"
           aria-label={isMenuOpen ? "Zatvoriť menu" : "Otvoriť menu"}
           aria-expanded={isMenuOpen}
           aria-controls="main-menu"
           onClick={() => setIsMenuOpen((current) => !current)}
         >
-          <svg
-            className={styles.burgerIcon}
-            aria-hidden="true"
-            focusable="false"
-          >
-            <use
-              href={`/icons.svg#${isMenuOpen ? "icon-close" : "icon-menu"}`}
-            />
-          </svg>
+          <span className={styles.burgerLine}></span>
+          <span className={styles.burgerLine}></span>
+          <span className={styles.burgerLine}></span>
         </button>
 
         <div
