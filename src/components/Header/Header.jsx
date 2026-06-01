@@ -44,13 +44,13 @@ export default function Header() {
     });
   };
 
-  useEffect(() => {
-    document.body.style.overflow = isMenuOpen ? "hidden" : "";
+  // useEffect(() => {
+  //   document.body.style.overflow = isMenuOpen ? "hidden" : "";
 
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isMenuOpen]);
+  //   return () => {
+  //     document.body.style.overflow = "";
+  //   };
+  // }, [isMenuOpen]);
 
   useEffect(() => {
     const handleScroll = () => {

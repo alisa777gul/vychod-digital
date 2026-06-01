@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 16px 20px;
+  padding: 12px 20px;
   background: transparent;
   transition:
     background 0.25s ease,
@@ -44,12 +44,16 @@
 .logo {
   position: relative;
   z-index: 140;
-  display: inline-flex;
-  align-items: center;
-  width: 72px;
+  display: inline-grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
   flex: 0 0 auto;
   border-radius: 999px;
-  transition: transform 0.2s ease;
+  overflow: visible;
+  transition:
+    transform 0.2s ease,
+    filter 0.2s ease;
 }
 
 .logo:hover {
@@ -63,16 +67,18 @@
 
 .logo img {
   display: block;
-  width: 100%;
-  height: auto;
+  width: 74px;
+  height: 74px;
+  max-width: none;
+  object-fit: contain;
 }
 
 .burger {
   position: relative;
   z-index: 140;
   display: inline-grid;
-  width: 46px;
-  height: 46px;
+  width: 54px;
+  height: 54px;
   place-content: center;
   gap: 5px;
   padding: 0;
@@ -105,7 +111,7 @@
 
 .burgerLine {
   display: block;
-  width: 24px;
+  width: 25px;
   height: 2px;
   background: #111111;
   border-radius: 999px;
@@ -229,11 +235,22 @@
 
 @media (min-width: 768px) {
   .header {
-    padding: 18px 6vw;
+    padding: 16px 6vw;
   }
 
   .logo {
-    width: 88px;
+    width: 68px;
+    height: 68px;
+  }
+
+  .logo img {
+    width: 84px;
+    height: 84px;
+  }
+
+  .burger {
+    width: 56px;
+    height: 56px;
   }
 
   .menu {
