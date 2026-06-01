@@ -141,21 +141,29 @@
   gap: 10px;
 }
 
-.nav a {
+.nav a,
+.navButton {
   position: relative;
   display: inline-flex;
   width: fit-content;
+  padding: 0;
   color: #111111;
+  font: inherit;
   font-size: 17px;
   font-weight: 800;
   line-height: 1.2;
+  text-align: left;
   text-decoration: none;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
   transition:
     color 0.2s ease,
     transform 0.2s ease;
 }
 
-.nav a::after {
+.nav a::after,
+.navButton::after {
   content: "";
   position: absolute;
   right: 0;
@@ -168,16 +176,19 @@
   transition: transform 0.2s ease;
 }
 
-.nav a:hover {
+.nav a:hover,
+.navButton:hover {
   color: #df0014;
   transform: translateX(3px);
 }
 
-.nav a:hover::after {
+.nav a:hover::after,
+.navButton:hover::after {
   transform: scaleX(1) rotate(-1deg);
 }
 
-.nav a:focus-visible {
+.nav a:focus-visible,
+.navButton:focus-visible {
   outline: 3px solid #df0014;
   outline-offset: 6px;
 }
@@ -195,7 +206,7 @@
 
 @media (min-width: 768px) {
   .header {
-    padding: 14px 6vw;
+    padding: 18px 6vw;
   }
 
   .logo {
@@ -209,7 +220,6 @@
 
 @media (min-width: 1024px) {
   .header {
-    padding: 16px 6vw;
     gap: 24px;
   }
 
@@ -240,12 +250,14 @@
     gap: 34px;
   }
 
-  .nav a {
+  .nav a,
+  .navButton {
     font-size: 15px;
     font-weight: 500;
   }
 
-  .nav a:hover {
+  .nav a:hover,
+  .navButton:hover {
     transform: translateY(-2px);
   }
 }
