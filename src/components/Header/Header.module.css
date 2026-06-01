@@ -60,11 +60,6 @@
   transform: rotate(-3deg) scale(1.04);
 }
 
-.logo:focus-visible {
-  outline: 3px solid #df0014;
-  outline-offset: 6px;
-}
-
 .logo img {
   display: block;
   width: 64px;
@@ -228,7 +223,7 @@
   z-index: 80;
   display: block;
   padding: 0;
-  background: rgba(17, 17, 17, 0.12);
+  background: rgba(0, 0, 0, 0.12);
   border: 0;
   cursor: pointer;
 }

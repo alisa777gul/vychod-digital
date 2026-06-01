@@ -1,0 +1,30 @@
+.container {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* SECTION SPACING — MOBILE FIRST */
+section {
+  margin-bottom: 28px;
+}
+
+/* TABLET */
+@media (min-width: 768px) {
+  section {
+    margin-bottom: 36px;
+  }
+
+  .container {
+    padding: 24px;
+    max-width: 1020px;
+  }
+}
+
+/* DESKTOP */
+@media (min-width: 1024px) {
+  .container {
+    padding: 28px;
+  }
+}

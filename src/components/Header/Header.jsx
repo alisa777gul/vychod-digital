@@ -44,14 +44,6 @@ export default function Header() {
     });
   };
 
-  // useEffect(() => {
-  //   document.body.style.overflow = isMenuOpen ? "hidden" : "";
-
-  //   return () => {
-  //     document.body.style.overflow = "";
-  //   };
-  // }, [isMenuOpen]);
-
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 40);
