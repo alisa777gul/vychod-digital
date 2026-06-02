@@ -10,7 +10,12 @@ export default function App() {
   const [fadeOut, setFadeOut] = useState(false);
 
   useEffect(() => {
-    const handleLoad = () => {
+    let isLoaded = false;
+
+    const finish = () => {
+      if (isLoaded) return;
+      isLoaded = true;
+
       setFadeOut(true);
 
       setTimeout(() => {
@@ -18,13 +23,27 @@ export default function App() {
       }, 600);
     };
 
-    if (document.readyState === "complete") {
-      handleLoad();
-    } else {
-      window.addEventListener("load", handleLoad);
-    }
+    const images = Array.from(document.images);
 
-    return () => window.removeEventListener("load", handleLoad);
+    const imagePromises = images.map((img) => {
+      if (img.complete) return Promise.resolve();
+
+      return new Promise((resolve) => {
+        img.onload = resolve;
+        img.onerror = resolve;
+      });
+    });
+
+    const timeout = setTimeout(() => {
+      finish();
+    }, 4000);
+
+    Promise.all(imagePromises).then(() => {
+      clearTimeout(timeout);
+      finish();
+    });
+
+    return () => clearTimeout(timeout);
   }, []);
   if (loading) {
     return (
