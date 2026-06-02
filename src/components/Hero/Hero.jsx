@@ -29,7 +29,7 @@ export default function Hero() {
           </div>
 
           <div className={styles.visual}>
-            <img src={heroImage} alt="Notebook" />
+            <img src={heroImage} alt="Notebook" width="380" height="300" />
           </div>
         </div>
       </div>
