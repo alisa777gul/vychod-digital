@@ -26,7 +26,7 @@ export default function App() {
       <div className={`loader ${fadeOut ? "fadeOut" : ""}`}>
         <div className="loaderInner">
           <div className="logoPulse">
-            <img src="/favicon.svg" alt="logo" />
+            <img src="/logo.svg" alt="logo" />
           </div>
           <div className="loaderText">Východ Digital</div>
           <div className="loaderLine"></div>

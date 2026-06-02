@@ -72,7 +72,7 @@ export default function Header() {
             scrollToTop();
           }}
         >
-          <img src="/favicon.svg" alt="Východ Digital" />
+          <img src="/logo.svg" alt="Východ Digital" />
         </a>
 
         <button

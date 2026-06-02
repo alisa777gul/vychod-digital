@@ -35,7 +35,7 @@
 
   background-image: url("../../assets/whyus.png");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 404px auto;
   background-position: center;
 
   transition: 0.25s ease;
@@ -83,12 +83,15 @@
   margin: 0;
   font-size: 14px;
   line-height: 1.5;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgb(226, 226, 226);
 }
 
 @media (min-width: 768px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .reason {
+    background-size: 450px auto;
   }
 
   .whyUs h2 {
@@ -101,17 +104,8 @@
     color: #fff;
   }
   .reason {
-    background-color: black;
-    background-image: none;
+    background-size: 500px auto;
   }
-  .whyUs {
-    padding: 80px 0;
-    background-image: url("../../assets/whyus.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 1500px auto;
-  }
-
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }
