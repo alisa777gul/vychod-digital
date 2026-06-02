@@ -1,6 +1,5 @@
 import { services } from "../../data/services";
 import styles from "./Services.module.css";
-import "./Services.module.css";
 
 export default function Services() {
   return (
