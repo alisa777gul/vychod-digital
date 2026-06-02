@@ -8,18 +8,15 @@ import "./App.css";
 export default function App() {
   const [loading, setLoading] = useState(true);
   const [fadeOut, setFadeOut] = useState(false);
+  const [appVisible, setAppVisible] = useState(false);
 
   useEffect(() => {
-    let isLoaded = false;
-
     const finish = () => {
-      if (isLoaded) return;
-      isLoaded = true;
-
       setFadeOut(true);
 
       setTimeout(() => {
         setLoading(false);
+        setAppVisible(true);
       }, 600);
     };
 
@@ -60,7 +57,7 @@ export default function App() {
   }
 
   return (
-    <div className="appFadeIn">
+    <div className={`app ${appVisible ? "show" : ""}`}>
       <Header />
       <main>
         <Hero />
