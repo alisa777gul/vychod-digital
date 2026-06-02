@@ -5,7 +5,7 @@
 
 /* TITLE */
 .whyUs h2 {
-  margin: 0 0 32px;
+  margin: 0 auto 28px;
   text-align: center;
 
   font-size: clamp(26px, 5vw, 40px);
