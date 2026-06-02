@@ -10,17 +10,22 @@ export default function App() {
   const [fadeOut, setFadeOut] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    const handleLoad = () => {
       setFadeOut(true);
 
       setTimeout(() => {
         setLoading(false);
       }, 600);
-    }, 1400);
+    };
 
-    return () => clearTimeout(timer);
+    if (document.readyState === "complete") {
+      handleLoad();
+    } else {
+      window.addEventListener("load", handleLoad);
+    }
+
+    return () => window.removeEventListener("load", handleLoad);
   }, []);
-
   if (loading) {
     return (
       <div className={`loader ${fadeOut ? "fadeOut" : ""}`}>
