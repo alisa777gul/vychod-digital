@@ -100,9 +100,6 @@
 }
 
 @media (min-width: 1024px) {
-  .whyUs h2 {
-    color: #fff;
-  }
   .reason {
     background-size: 500px auto;
   }
