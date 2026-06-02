@@ -5,7 +5,9 @@ export default function WhyUs() {
   return (
     <section className={styles.whyUs} id="o-nas">
       <div className="container whyUs">
-        <h2>Prečo Východ Digital?</h2>
+        <h2>
+          Prečo <span>Východ Digital</span>?
+        </h2>
 
         <div className={styles.grid}>
           {reasons.map((reason) => (

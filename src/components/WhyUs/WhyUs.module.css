@@ -1,5 +1,4 @@
 .whyUs {
-  padding: 60px 0;
   color: #fff;
   overflow: hidden;
 }
@@ -12,13 +11,11 @@
   font-size: clamp(26px, 5vw, 40px);
   font-weight: 800;
   line-height: 1.1;
+  color: #000000;
+}
 
-  /* MOBILE BACKGROUND */
-  background-image: url("../../assets/whyus.png");
-  background-repeat: no-repeat;
-  background-size: 400px auto;
-  background-position: center;
-  padding: 20px 10px;
+.whyUs h2 span {
+  color: #df0014;
 }
 
 /* GRID */
@@ -60,15 +57,16 @@
 
 /* ICON */
 .reason span {
-  width: 24px;
-  height: 24px;
-
-  display: grid;
-  place-items: center;
-
+  width: 20px;
+  height: 20px;
+  padding: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: #df0014;
   border: 2px solid #df0014;
   border-radius: 50%;
+  background-color: #000000;
 }
 
 /* TEXT */
@@ -100,8 +98,7 @@
 
 @media (min-width: 1024px) {
   .whyUs h2 {
-    background: none;
-    padding: 0;
+    color: #fff;
   }
   .reason {
     background-color: black;
