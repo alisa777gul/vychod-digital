@@ -65,9 +65,9 @@
   align-items: center;
   justify-content: center;
   width: 64px;
-  height: 64px;
-  max-width: none;
+  height: auto;
   object-fit: contain;
+  display: block;
 }
 
 .burger {
