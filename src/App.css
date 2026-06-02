@@ -28,3 +28,114 @@ section {
     padding: 28px;
   }
 }
+
+.loader {
+  position: fixed;
+  inset: 0;
+  background: #faf9f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+.loader.fadeOut {
+  opacity: 0;
+  transform: scale(1.02);
+}
+
+.loaderInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+/* LOGO */
+.logoPulse {
+  width: 70px;
+  height: 70px;
+  display: grid;
+  place-items: center;
+
+  animation: pulse 1.4s infinite ease-in-out;
+}
+
+.logoPulse img {
+  width: 60px;
+  height: auto;
+  display: block;
+}
+
+/* TEXT */
+.loaderText {
+  font-size: 14px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #111;
+  opacity: 0.7;
+}
+
+/* LINE ANIMATION */
+.loaderLine {
+  width: 140px;
+  height: 2px;
+  background: rgba(17, 17, 17, 0.1);
+  overflow: hidden;
+  position: relative;
+}
+
+.loaderLine::after {
+  content: "";
+  position: absolute;
+  left: -50%;
+  width: 50%;
+  height: 100%;
+  background: #df0014;
+  animation: slide 1.2s infinite ease-in-out;
+}
+
+/* ANIMATIONS */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+}
+
+@keyframes slide {
+  0% {
+    left: -50%;
+  }
+  100% {
+    left: 120%;
+  }
+}
+
+/* SITE FADE IN */
+.appFadeIn {
+  animation: fadeInApp 0.6s ease forwards;
+}
+
+@keyframes fadeInApp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
