@@ -6,6 +6,12 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
 }
 
 /* RESET */
