@@ -5,6 +5,9 @@ import Services from "./components/Services/Services";
 import WhyUs from "./components/WhyUs/WhyUs";
 import "./App.css";
 import Projects from "./components/Projects/Projects";
+import Contact from "./components/Contact/Contact";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -65,6 +68,8 @@ export default function App() {
         <Services />
         <WhyUs />
         <Projects />
+        <Contact />
+        <ToastContainer position="bottom-left" autoClose={2000} newestOnTop />
       </main>
     </div>
   );

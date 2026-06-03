@@ -2,6 +2,10 @@
   color: #111;
 }
 
+.projects h2 span {
+  color: #df0014;
+}
+
 /* GRID — MOBILE FIRST */
 .list {
   display: grid;

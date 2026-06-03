@@ -1,12 +1,12 @@
 import Button from "../Button/Button";
 import heroImage from "../../assets/hero-image.svg";
 import styles from "./Hero.module.css";
+import { scrollToSection } from "../../utils/scrollToSection";
 
 export default function Hero() {
   return (
     <section className={styles.hero} id="home">
       <div className="container">
-        {" "}
         <div className={styles.heroInner}>
           <div className={styles.content}>
             <h1>
@@ -21,8 +21,24 @@ export default function Hero() {
             </p>
 
             <div className={styles.actions}>
-              <Button href="#kontakt">Získať webstránku</Button>
-              <Button href="#projekty" variant="outline">
+              <Button
+                href="#kontakt"
+                onClick={(event) => {
+                  event.preventDefault();
+                  scrollToSection("#kontakt");
+                }}
+              >
+                Získať webstránku
+              </Button>
+
+              <Button
+                href="#projekty"
+                variant="outline"
+                onClick={(event) => {
+                  event.preventDefault();
+                  scrollToSection("#projekty");
+                }}
+              >
                 Pozrieť prácu
               </Button>
             </div>

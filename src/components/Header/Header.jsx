@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import Button from "../Button/Button";
 import styles from "./Header.module.css";
+import { scrollToSection } from "../../utils/scrollToSection";
 
 const navItems = [
-  { label: "Domov", href: "top" },
+  { label: "Domov", href: "#home" },
   { label: "Služby", href: "#sluzby" },
   { label: "O nás", href: "#o-nas" },
   { label: "Projekty", href: "#projekty" },
@@ -12,36 +13,23 @@ const navItems = [
 
 export default function Header() {
   const headerRef = useRef(null);
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-  };
+  const closeMenu = () => setIsMenuOpen(false);
 
-  const scrollToTop = () => {
+  const handleScrollToTop = () => {
     closeMenu();
-
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
   };
 
-  const scrollToSection = (href) => {
-    const section = document.querySelector(href);
-
-    if (!section) return;
-
-    const headerHeight = headerRef.current?.offsetHeight || 0;
-    const sectionTop = section.getBoundingClientRect().top + window.scrollY;
-
+  const handleScrollToSection = (href) => {
     closeMenu();
-
-    window.scrollTo({
-      top: sectionTop - headerHeight - 18,
-      behavior: "smooth",
-    });
+    scrollToSection(href);
   };
 
   useEffect(() => {
@@ -52,9 +40,7 @@ export default function Header() {
     handleScroll();
     window.addEventListener("scroll", handleScroll);
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
@@ -63,66 +49,63 @@ export default function Header() {
         ref={headerRef}
         className={`${styles.header} ${isScrolled ? styles.scrolled : ""}`}
       >
+        {/* LOGO */}
         <a
           className={styles.logo}
-          href="#top"
-          aria-label="Východ Digital - Domov"
-          onClick={(event) => {
-            event.preventDefault();
-            scrollToTop();
+          href="#home"
+          aria-label="Home"
+          onClick={(e) => {
+            e.preventDefault();
+            handleScrollToTop();
           }}
         >
-          <img src="/logo.svg" alt="Východ Digital" />
+          <img src="/logo.svg" alt="Logo" />
         </a>
 
+        {/* BURGER */}
         <button
           className={`${styles.burger} ${isMenuOpen ? styles.burgerOpen : ""}`}
           type="button"
           aria-label={isMenuOpen ? "Zatvoriť menu" : "Otvoriť menu"}
           aria-expanded={isMenuOpen}
           aria-controls="main-menu"
-          onClick={() => setIsMenuOpen((current) => !current)}
+          onClick={() => setIsMenuOpen((prev) => !prev)}
         >
           <span className={styles.burgerLine}></span>
           <span className={styles.burgerLine}></span>
           <span className={styles.burgerLine}></span>
         </button>
 
+        {/* MENU */}
         <div
           className={`${styles.menu} ${isMenuOpen ? styles.menuOpen : ""}`}
           id="main-menu"
         >
-          <nav className={styles.nav} aria-label="Hlavná navigácia">
-            {navItems.map((item) =>
-              item.href === "top" ? (
-                <button
-                  className={styles.navButton}
-                  key={item.href}
-                  type="button"
-                  onClick={scrollToTop}
-                >
-                  {item.label}
-                </button>
-              ) : (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  onClick={(event) => {
-                    event.preventDefault();
-                    scrollToSection(item.href);
-                  }}
-                >
-                  {item.label}
-                </a>
-              ),
-            )}
+          <nav className={styles.nav} aria-label="Main navigation">
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={(e) => {
+                  e.preventDefault();
+
+                  if (item.href === "#home") {
+                    handleScrollToTop();
+                  } else {
+                    handleScrollToSection(item.href);
+                  }
+                }}
+              >
+                {item.label}
+              </a>
+            ))}
           </nav>
 
           <Button
             href="#kontakt"
-            onClick={(event) => {
-              event.preventDefault();
-              scrollToSection("#kontakt");
+            onClick={(e) => {
+              e.preventDefault();
+              handleScrollToSection("#kontakt");
             }}
           >
             Napíšte nám
@@ -130,11 +113,12 @@ export default function Header() {
         </div>
       </header>
 
+      {/* BACKDROP */}
       {isMenuOpen && (
         <button
           className={styles.backdrop}
           type="button"
-          aria-label="Zatvoriť menu"
+          aria-label="Close menu"
           onClick={closeMenu}
         />
       )}
