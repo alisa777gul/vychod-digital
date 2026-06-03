@@ -1,25 +1,27 @@
+/* eslint-disable no-unused-vars */
 import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
-import { toast } from "react-toastify";
 import css from "./Contact.module.css";
 
 const Contact = () => {
   const form = useRef();
   const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState(null);
+  // "success" | "error" | "empty" | null
 
   const sendEmail = async (e) => {
     e.preventDefault();
 
     if (loading) return;
 
-    const formData = new FormData(form.current);
+    const data = new FormData(form.current);
 
-    const name = formData.get("name")?.trim();
-    const email = formData.get("email")?.trim();
-    const message = formData.get("message")?.trim();
+    const name = data.get("name")?.trim();
+    const email = data.get("email")?.trim();
+    const message = data.get("message")?.trim();
 
     if (!name || !email || !message) {
-      toast.error("Prosím, vyplňte všetky polia");
+      setStatus("empty");
       return;
     }
 
@@ -33,14 +35,14 @@ const Contact = () => {
         "o8sk9177Z3fnCr-66",
       );
 
-      toast.success("Vaša správa bola úspešne odoslaná");
-
+      setStatus("success");
       form.current.reset();
     } catch (error) {
-      console.error(error);
-      toast.error("Chyba pri odosielaní. Skúste to znova.");
+      setStatus("error");
     } finally {
       setLoading(false);
+
+      setTimeout(() => setStatus(null), 3000);
     }
   };
 
@@ -52,33 +54,44 @@ const Contact = () => {
         </h2>
 
         <p className={css.subtitle}>
-          Ak máte záujem o spoluprácu, napíšte nám správu a odpovieme vám čo
-          najskôr.
+          Napíšte nám správu a odpovieme Vám čo najskôr.
         </p>
 
         <div className={css.grid}>
-          {/* INFO */}
           <div className={css.info}>
             <div className={css.card}>
               <h3>Email</h3>
               <a href="mailto:hello@vychoddigital.sk">hello@vychoddigital.sk</a>
             </div>
-
-            <div className={css.card}>
-              <h3>Telefón</h3>
-              <a href="tel:+421900000000">+421 900 000 000</a>
-            </div>
           </div>
 
-          {/* FORM */}
-          <form ref={form} onSubmit={sendEmail} className={css.form} noValidate>
-            <input name="name" type="text" placeholder="Vaše meno" />
+          <form ref={form} onSubmit={sendEmail} className={css.form}>
+            <input name="name" type="text" placeholder="Meno" />
             <input name="email" type="email" placeholder="Email" />
             <textarea name="message" rows="5" placeholder="Správa" />
 
             <button type="submit" disabled={loading}>
-              {loading ? "Odosielam..." : "Odoslať správu"}
+              {loading ? "Odosielam..." : "Odoslať"}
             </button>
+
+            {/* 👇 CUSTOM NOTIFICATION */}
+            {status === "success" && (
+              <p className={`${css.notice} ${css.success}`}>
+                ✔ Správa bola úspešne odoslaná
+              </p>
+            )}
+
+            {status === "error" && (
+              <p className={`${css.notice} ${css.error}`}>
+                ✖ Chyba pri odosielaní
+              </p>
+            )}
+
+            {status === "empty" && (
+              <p className={`${css.notice} ${css.error}`}>
+                Vyplňte všetky polia
+              </p>
+            )}
           </form>
         </div>
       </div>
