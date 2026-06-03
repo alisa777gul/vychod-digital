@@ -1,21 +1,39 @@
 :root {
   font-family: "Courier New", monospace;
   color: #111111;
-  background: #faf9f5;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  min-height: 100vh;
 }
 html,
 body {
+  height: 100%;
   margin: 0;
   padding: 0;
 }
 
+#root {
+  min-height: 100vh;
+}
+
+body {
+  background: #faf9f5; /* без градиентов */
+  color: #111;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+main {
+  flex-grow: 1;
+}
+
 /* RESET */
 * {
+  font-family: "Courier New", monospace;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
