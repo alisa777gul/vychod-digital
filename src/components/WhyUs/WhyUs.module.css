@@ -1,17 +1,5 @@
 .whyUs {
-  color: #fff;
   overflow: hidden;
-}
-
-/* TITLE */
-.whyUs h2 {
-  margin: 0 auto 28px;
-  text-align: center;
-
-  font-size: clamp(26px, 5vw, 40px);
-  font-weight: 800;
-  line-height: 1.1;
-  color: #000000;
 }
 
 .whyUs h2 span {
@@ -27,6 +15,7 @@
 
 /* CARD (MOBILE = С ОТДЕЛЬНЫМ ФОНОМ) */
 .reason {
+  color: #fff;
   display: flex;
   gap: 12px;
   align-items: flex-start;
@@ -93,10 +82,6 @@
   }
   .reason {
     background-size: 450px auto;
-  }
-
-  .whyUs h2 {
-    font-size: 34px;
   }
 }
 

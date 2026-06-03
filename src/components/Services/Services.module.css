@@ -2,16 +2,6 @@
   text-align: center;
 }
 
-/* TITLE */
-.title {
-  font-size: 22px;
-  font-weight: 800;
-  line-height: 1.2;
-  margin: 0 auto 28px;
-  display: inline-block;
-  position: relative;
-}
-
 /* brush span */
 .title span {
   display: inline-block;
@@ -129,10 +119,6 @@
 
 /* TABLET */
 @media (min-width: 768px) {
-  .title {
-    font-size: 28px;
-  }
-
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }
