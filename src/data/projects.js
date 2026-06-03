@@ -1,4 +1,5 @@
 import project1 from "../../src/assets/project1.png";
+import project2 from "../../src/assets/project2.png";
 
 export const projects = [
   {
@@ -11,16 +12,17 @@ export const projects = [
   },
   {
     id: 2,
-    title: "Kaviareň",
-    description: "Prezentačný web s dôrazom na značku a používateľský zážitok.",
-    // image: project2,
+    title: "3D Frame Studio",
+    description:
+      "Výroba custom 3D rámov s fotografiou a LED podsvietením na mieru.",
+    image: project2,
     link: "#",
   },
-  {
-    id: 3,
-    title: "Autoservis",
-    description: "Moderná webstránka zameraná na získavanie nových dopytov.",
-    // image: project3,
-    link: "#",
-  },
+  //   {
+  //     id: 3,
+  //     title: "Autoservis",
+  //     description: "Moderná webstránka zameraná na získavanie nových dopytov.",
+  //     // image: project3,
+  //     link: "#",
+  //   },
 ];

@@ -175,7 +175,7 @@ h2 {
 /* desktop */
 @media (min-width: 1024px) {
   h2 {
-    font-size: 40px;
+    font-size: 36px;
     margin-bottom: 50px;
   }
 }
