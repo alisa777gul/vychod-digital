@@ -16,8 +16,8 @@ export default function Hero() {
             </h1>
 
             <p>
-              Tvoríme moderné webstránky, ktoré pomáhajú firmám rásť, predávať a
-              vyniknúť online.
+              Navrhujeme moderné a rýchle weby pre podnikateľov na Slovensku,
+              ktoré budujú dôveru a zvyšujú počet dopytov.
             </p>
 
             <div className={styles.actions}>
@@ -28,7 +28,7 @@ export default function Hero() {
                   scrollToSection("#kontakt");
                 }}
               >
-                Získať webstránku
+                Chcem návrh webstránky
               </Button>
 
               <Button

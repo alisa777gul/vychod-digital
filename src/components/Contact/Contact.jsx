@@ -54,7 +54,11 @@ const Contact = () => {
         </h2>
 
         <p className={css.subtitle}>
-          Napíšte nám správu a odpovieme Vám čo najskôr.
+          Chcete webstránku, ktorá vám prinesie zákazníkov?
+          <br />
+          Ozvite sa nám a pripravíme vám návrh riešenia na mieru – bezplatne a
+          nezáväzne. <br />
+          <span> Odpovieme do 24 hodín.</span>
         </p>
 
         <div className={css.grid}>

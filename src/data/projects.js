@@ -6,7 +6,7 @@ export const projects = [
     id: 1,
     title: "Happy Shark",
     description:
-      "Landing page pre dropshipping značku, zameraná na prezentáciu a konverzie.",
+      "Landing page navrhnutá s cieľom zvýšiť konverzie a podporiť predaj produktu online.",
     image: project1,
     link: "https://happy-shark.pp.ua/",
   },
@@ -14,7 +14,7 @@ export const projects = [
     id: 2,
     title: "3D Frame Studio",
     description:
-      "Výroba custom 3D rámov s fotografiou a LED podsvietením na mieru.",
+      "Webové riešenie pre značku zameranú na predaj personalizovaných produktov.",
     image: project2,
     link: "#",
   },

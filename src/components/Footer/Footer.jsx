@@ -7,11 +7,8 @@ export default function Footer() {
         {/* LEFT */}
         <div className={styles.brand}>
           <p className={styles.name}>
-            Východ <span>Digital</span>
-          </p>
-          <p>
-            Digitálna agentúra z východného Slovenska, ktorá tvorí moderné,
-            rýchle a funkčné webové riešenia.
+            Východ <span>Digital</span> – digitálna agentúra zameraná na weby,
+            ktoré prinášajú výsledky, nie len dizajn.
           </p>
         </div>
 

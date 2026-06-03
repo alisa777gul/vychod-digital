@@ -121,7 +121,6 @@
 .content p {
   font-size: 13.5px;
   line-height: 1.5;
-  color: rgba(0, 0, 0, 0.75);
 
   display: -webkit-box;
   -webkit-line-clamp: 3;

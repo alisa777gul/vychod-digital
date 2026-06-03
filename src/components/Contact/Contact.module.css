@@ -17,9 +17,10 @@
   max-width: 600px;
   margin: 0 auto 30px;
   font-weight: 600;
-  color: rgba(0, 0, 0, 0.75);
 }
-
+.subtitle span {
+  color: #df0014;
+}
 /* GRID */
 .grid {
   display: grid;

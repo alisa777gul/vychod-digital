@@ -6,22 +6,22 @@ import img4 from "../assets/services/img4-services.svg";
 export const services = [
   {
     title: "Webstránky na mieru",
-    text: "Moderné a funkčné weby, ktoré reprezentujú vašu značku.",
+    text: "Komplexné webové riešenia navrhnuté tak, aby podporovali rast vášho podnikania a získavali nových zákazníkov.",
     icon: img1,
   },
   {
     title: "Landing pages",
-    text: "Stránky zamerané na výsledky a čo najvyššiu konverziu.",
+    text: "Stránky optimalizované na konverziu, ktoré premieňajú návštevníkov na reálnych zákazníkov.",
     icon: img2,
   },
   {
     title: "UI/UX dizajn",
-    text: "Dizajn, ktorý je nielen krásny, ale aj používateľsky prívetivý.",
+    text: "Dizajn založený na používateľskom správaní, ktorý vedie klienta k akcii a zvyšuje predaj.",
     icon: img3,
   },
   {
     title: "Digitálna stratégia",
-    text: "Pomáhame firmám rásť v online svete.",
+    text: "Strategický prístup k online prezentácii, ktorý zlepšuje výkon a viditeľnosť firmy.",
     icon: img4,
   },
 ];
