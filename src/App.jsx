@@ -68,6 +68,7 @@ export default function App() {
         <Services />
         <WhyUs />
         <Projects />
+
         <Contact />
         <ToastContainer position="bottom-left" autoClose={2000} newestOnTop />
       </main>
