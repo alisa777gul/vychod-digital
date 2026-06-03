@@ -46,13 +46,13 @@ const Contact = () => {
 
   return (
     <section id="kontakt" className={css.contact}>
-      <div className={css.container}>
+      <div className="container">
         <h2>
           Kontakt <span>pre vás</span>
         </h2>
 
         <p className={css.subtitle}>
-          Ak máte záujem o spoluprácu, napíšte nám správu a odpoviem vám čo
+          Ak máte záujem o spoluprácu, napíšte nám správu a odpovieme vám čo
           najskôr.
         </p>
 
