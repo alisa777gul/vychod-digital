@@ -1,49 +1,89 @@
 .footer {
-  background: #000000;
-
+  background: #000;
   padding: 70px 20px 20px;
   width: 100%;
   display: block;
   margin-top: auto;
 }
 
+/* =========================
+   CONTAINER FIX (stability)
+========================= */
 .container {
   max-width: 1100px;
   margin: 0 auto;
+
   display: grid;
   grid-template-columns: 1fr;
   gap: 40px;
+
+  align-items: start;
 }
 
-.brand img {
-  width: 80px;
-  margin-bottom: 12px;
-}
+/* =========================
+   BRAND
+========================= */
 
 .brand p {
   color: #fff;
   font-size: 14px;
   line-height: 1.6;
+  position: relative;
+  max-width: 320px; /* 🔥 prevents ugly long lines */
+}
+.brand p::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background: #df0014;
+  transform: rotate(-1deg);
+  border-radius: 2px;
 }
 
+/* =========================
+   HEADINGS
+========================= */
 .links h4,
 .contact h4 {
+  position: relative;
   font-size: 16px;
-  margin-bottom: 10px;
-  color: #df0014;
+  margin-bottom: 16px;
+  color: #ffffff;
+  width: fit-content;
+  letter-spacing: 0.3px;
 }
 
-.name span {
-  color: #df0014;
+.links h4::after,
+.contact h4::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background: #df0014;
+  transform: rotate(-1deg);
+  border-radius: 2px;
 }
+
 .links a,
 .contact a {
   display: block;
-  color: #ffffff;
+  color: #fff;
+  font-weight: 800;
   text-decoration: none;
-  margin-bottom: 6px;
+
+  margin-bottom: 12px;
   font-size: 14px;
-  transition: 0.2s;
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+
+  width: fit-content;
 }
 
 .links a:hover,
@@ -52,10 +92,14 @@
   transform: translateX(4px);
 }
 
+/* =========================
+   BOTTOM (FIX STRUCTURE)
+========================= */
 .bottom * {
   margin-top: 40px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding-top: 16px;
+
   text-align: center;
   font-size: 12px;
   color: rgba(255, 255, 255, 0.5);
@@ -64,5 +108,6 @@
 @media (min-width: 768px) {
   .container {
     grid-template-columns: 2fr 1fr 1fr;
+    gap: 50px;
   }
 }

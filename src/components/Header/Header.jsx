@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../Button/Button";
 import styles from "./Header.module.css";
 import { scrollToSection } from "../../utils/scrollToSection";
@@ -12,51 +12,42 @@ const navItems = [
 ];
 
 export default function Header() {
-  const headerRef = useRef(null);
-
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
   const closeMenu = () => setIsMenuOpen(false);
 
-  const handleScrollToTop = () => {
-    closeMenu();
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-
-  const handleScrollToSection = (href) => {
+  const handleScroll = (href) => {
     closeMenu();
     scrollToSection(href);
   };
 
+  const handleTop = () => {
+    closeMenu();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40);
-    };
+    const onScroll = () => setIsScrolled(window.scrollY > 40);
 
-    handleScroll();
-    window.addEventListener("scroll", handleScroll);
+    onScroll();
+    window.addEventListener("scroll", onScroll);
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
     <>
       <header
-        ref={headerRef}
         className={`${styles.header} ${isScrolled ? styles.scrolled : ""}`}
       >
         {/* LOGO */}
         <a
-          className={styles.logo}
           href="#home"
-          aria-label="Home"
+          className={styles.logo}
           onClick={(e) => {
             e.preventDefault();
-            handleScrollToTop();
+            handleTop();
           }}
         >
           <img src="/logo.svg" alt="Logo" />
@@ -65,11 +56,8 @@ export default function Header() {
         {/* BURGER */}
         <button
           className={`${styles.burger} ${isMenuOpen ? styles.burgerOpen : ""}`}
-          type="button"
-          aria-label={isMenuOpen ? "Zatvoriť menu" : "Otvoriť menu"}
-          aria-expanded={isMenuOpen}
-          aria-controls="main-menu"
           onClick={() => setIsMenuOpen((prev) => !prev)}
+          aria-label="menu"
         >
           <span className={styles.burgerLine}></span>
           <span className={styles.burgerLine}></span>
@@ -77,11 +65,8 @@ export default function Header() {
         </button>
 
         {/* MENU */}
-        <div
-          className={`${styles.menu} ${isMenuOpen ? styles.menuOpen : ""}`}
-          id="main-menu"
-        >
-          <nav className={styles.nav} aria-label="Main navigation">
+        <div className={`${styles.menu} ${isMenuOpen ? styles.menuOpen : ""}`}>
+          <nav className={styles.nav}>
             {navItems.map((item) => (
               <a
                 key={item.href}
@@ -89,11 +74,8 @@ export default function Header() {
                 onClick={(e) => {
                   e.preventDefault();
 
-                  if (item.href === "#home") {
-                    handleScrollToTop();
-                  } else {
-                    handleScrollToSection(item.href);
-                  }
+                  if (item.href === "#home") handleTop();
+                  else handleScroll(item.href);
                 }}
               >
                 {item.label}
@@ -105,7 +87,7 @@ export default function Header() {
             href="#kontakt"
             onClick={(e) => {
               e.preventDefault();
-              handleScrollToSection("#kontakt");
+              handleScroll("#kontakt");
             }}
           >
             Napíšte nám
@@ -114,14 +96,7 @@ export default function Header() {
       </header>
 
       {/* BACKDROP */}
-      {isMenuOpen && (
-        <button
-          className={styles.backdrop}
-          type="button"
-          aria-label="Close menu"
-          onClick={closeMenu}
-        />
-      )}
+      {isMenuOpen && <button className={styles.backdrop} onClick={closeMenu} />}
     </>
   );
 }
