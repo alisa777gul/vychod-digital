@@ -12,15 +12,17 @@ const Projects = () => {
         <ul className={css.list}>
           {projects.map((project) => (
             <li key={project.id} className={css.card}>
-              <img
-                src={project.image}
-                srcSet={`${project.image} 600w, ${project.image2x} 800w`}
-                sizes="(max-width: 768px) 100vw, 400px"
-                alt={project.title}
-                className={css.image}
-                loading="lazy"
-                decoding="async"
-              />
+              <div className={css.imageWrapper}>
+                <img
+                  src={project.image}
+                  srcSet={`${project.image} 600w, ${project.image2x} 800w`}
+                  sizes="(max-width: 768px) 100vw, 400px"
+                  alt={project.title}
+                  className={css.image}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
 
               <div className={css.content}>
                 <span className={css.tag}>React</span>
