@@ -53,7 +53,7 @@ const Contact = () => {
   return (
     <section id="kontakt" className={css.contact}>
       <div className="container">
-        <h2>
+        <h2 className="visually-hidden">
           Kontakt <span>pre vás</span>
         </h2>
 

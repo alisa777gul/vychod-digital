@@ -1,7 +1,7 @@
 import Button from "../Button/Button";
 import styles from "./Hero.module.css";
 import { scrollToSection } from "../../utils/scrollToSection";
-
+import heroImage from "../../assets/heroImage.webp";
 export default function Hero() {
   return (
     <section className={styles.hero} id="home">
@@ -45,11 +45,11 @@ export default function Hero() {
 
           <div className={styles.visual}>
             <img
-              src="../../assets/hero-image.svg"
+              src={heroImage}
               alt="Notebook"
               width="380"
               height="300"
-              fetchpriority="high"
+              fetchPriority="high"
             />
           </div>
         </div>
