@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-vars */
 import { useRef, useState } from "react";
-import emailjs from "@emailjs/browser";
 import css from "./Contact.module.css";
 
 const Contact = () => {
@@ -28,12 +27,19 @@ const Contact = () => {
     try {
       setLoading(true);
 
-      await emailjs.sendForm(
-        "service_ur5ogyc",
-        "template_i3zatn4",
-        form.current,
-        "o8sk9177Z3fnCr-66",
-      );
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          message,
+        }),
+      });
+
+      if (!response.ok) throw new Error();
 
       setStatus("success");
       form.current.reset();
@@ -41,11 +47,9 @@ const Contact = () => {
       setStatus("error");
     } finally {
       setLoading(false);
-
       setTimeout(() => setStatus(null), 3000);
     }
   };
-
   return (
     <section id="kontakt" className={css.contact}>
       <div className="container">
