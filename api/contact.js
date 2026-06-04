@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -24,6 +26,37 @@ export default async function handler(req, res) {
         <p><b>Email:</b> ${email}</p>
         <p><b>Správa:</b> ${message}</p>
       `,
+    });
+    await resend.emails.send({
+      from: "onboarding@resend.dev",
+      to: email,
+      subject: "Ďakujeme za vašu správu 🙌",
+      html: `
+    <div style="font-family: Arial, sans-serif; padding: 20px;">
+      
+      <div style="text-align:center;">
+        <img 
+          src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d"
+          alt="Vychod Digital"
+          style="width:100%; max-width:500px; border-radius:12px;"
+        />
+      </div>
+
+      <h2 style="color:#111; margin-top:20px;">
+        Ďakujeme, ${name}! 👋
+      </h2>
+
+      <p style="font-size:16px; color:#444;">
+        Dostali sme vašu správu a budeme vás kontaktovať do 24 hodín.
+      </p>
+
+      <div style="margin-top:20px; padding:15px; background:#f5f5f5; border-radius:10px;">
+        <p style="margin:0;"><b>Východ Digital</b></p>
+        <p style="margin:0; font-size:14px;">Webové štúdio</p>
+      </div>
+
+    </div>
+  `,
     });
 
     return res.status(200).json({ success: true });
