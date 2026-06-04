@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -23,8 +24,9 @@ export default async function handler(req, res) {
 
     console.log("NEW LEAD:", { name, email: cleanEmail });
 
+    // 📩 1. ПИСЬМО ТЕБЕ
     const ownerEmail = await resend.emails.send({
-      from: "Východ Digital <onboarding@resend.dev>",
+      from: "Vychod Digital <onboarding@resend.dev>",
       to: "gulyayevaalisa@gmail.com",
       subject: "📩 Nová správa z webu",
       html: `
@@ -37,13 +39,14 @@ export default async function handler(req, res) {
 
     console.log("OWNER EMAIL:", ownerEmail);
 
+    // 📩 2. АВТООТВЕТ КЛИЕНТУ
     const clientEmail = await resend.emails.send({
-      from: "onboarding@resend.dev",
+      from: "Vychod Digital <onboarding@resend.dev>",
       to: cleanEmail,
       subject: "Ďakujeme za vašu správu 🙌",
       html: `
-        <div style="font-family: Arial, sans-serif; padding: 20px;">
-          
+        <div style="font-family: Arial, sans-serif; padding: 20px; color:#111;">
+
           <div style="text-align:center;">
             <img 
               src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d"
@@ -51,13 +54,15 @@ export default async function handler(req, res) {
             />
           </div>
 
-          <h2>Ďakujeme, ${name}! 👋</h2>
+          <h2 style="margin-top:20px;">
+            Ďakujeme, ${name}! 👋
+          </h2>
 
-          <p>
+          <p style="font-size:16px; color:#444;">
             Dostali sme vašu správu a odpovieme vám do 24 hodín.
           </p>
 
-          <div style="margin-top:20px;padding:15px;background:#f5f5f5;border-radius:10px;">
+          <div style="margin-top:20px; padding:15px; background:#f5f5f5; border-radius:10px;">
             <b>Východ Digital</b><br/>
             Webové štúdio
           </div>
