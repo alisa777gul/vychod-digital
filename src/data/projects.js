@@ -1,5 +1,5 @@
-import project1 from "../../src/assets/project1.png";
-import project2 from "../../src/assets/project2.png";
+import project1 from "../../src/assets/project1.webp";
+import project2 from "../../src/assets/project2.webp";
 
 export const projects = [
   {

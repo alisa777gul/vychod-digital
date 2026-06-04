@@ -45,7 +45,13 @@ export default function Hero() {
           </div>
 
           <div className={styles.visual}>
-            <img src={heroImage} alt="Notebook" width="380" height="300" />
+            <img
+              src={heroImage}
+              alt="Notebook"
+              width="380"
+              height="300"
+              fetchpriority="high"
+            />
           </div>
         </div>
       </div>

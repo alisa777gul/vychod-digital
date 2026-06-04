@@ -16,6 +16,7 @@ const Projects = () => {
                 src={project.image}
                 alt={project.title}
                 className={css.image}
+                loading="lazy"
               />
 
               <div className={css.content}>
