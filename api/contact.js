@@ -7,28 +7,24 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const { name, email, message } = req.body || {};
-
-  // 🔐 validation
-  if (
-    !name ||
-    !email ||
-    !message ||
-    typeof email !== "string" ||
-    typeof name !== "string" ||
-    typeof message !== "string"
-  ) {
-    return res.status(400).json({ error: "Invalid input" });
-  }
-
-  const cleanEmail = email.trim();
-
-  console.log("NEW LEAD:", { name, email: cleanEmail });
-
   try {
-    // 1. Письмо тебе (лид)
+    const { name, email, message } = req.body || {};
+
+    // 🔐 validation
+    if (!name || !email || !message) {
+      return res.status(400).json({ error: "Missing fields" });
+    }
+
+    const cleanEmail = String(email).trim().toLowerCase();
+
+    if (!cleanEmail.includes("@")) {
+      return res.status(400).json({ error: "Invalid email" });
+    }
+
+    console.log("NEW LEAD:", { name, email: cleanEmail });
+
     const ownerEmail = await resend.emails.send({
-      from: "onboarding@resend.dev",
+      from: "Východ Digital <onboarding@resend.dev>",
       to: "gulyayevaalisa@gmail.com",
       subject: "📩 Nová správa z webu",
       html: `
@@ -41,7 +37,6 @@ export default async function handler(req, res) {
 
     console.log("OWNER EMAIL:", ownerEmail);
 
-    // 2. Автоответ клиенту
     const clientEmail = await resend.emails.send({
       from: "onboarding@resend.dev",
       to: cleanEmail,
@@ -73,9 +68,7 @@ export default async function handler(req, res) {
 
     console.log("CLIENT EMAIL:", clientEmail);
 
-    return res.status(200).json({
-      success: true,
-    });
+    return res.status(200).json({ success: true });
   } catch (err) {
     console.error("RESEND ERROR:", err);
 
