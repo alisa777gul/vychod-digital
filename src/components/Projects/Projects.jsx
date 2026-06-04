@@ -17,7 +17,6 @@ const Projects = () => {
                 srcSet={`${project.image} 600w, ${project.image2x} 800w`}
                 sizes="(max-width: 768px) 400px, 600px"
                 alt={project.title}
-                className={css.image}
                 width="400"
                 height="220"
                 loading="lazy"
