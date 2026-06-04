@@ -42,7 +42,7 @@ export default async function handler(req, res) {
     // 📩 2. АВТООТВЕТ КЛИЕНТУ
     const clientEmail = await resend.emails.send({
       from: "Vychod Digital <onboarding@resend.dev>",
-      to: cleanEmail,
+      to: "alikiki607@gmail.com",
       subject: "Ďakujeme za vašu správu 🙌",
       html: `
         <div style="font-family: Arial, sans-serif; padding: 20px; color:#111;">
