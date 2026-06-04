@@ -1,5 +1,4 @@
 import Button from "../Button/Button";
-import heroImage from "../../assets/hero-image.svg";
 import styles from "./Hero.module.css";
 import { scrollToSection } from "../../utils/scrollToSection";
 
@@ -46,7 +45,7 @@ export default function Hero() {
 
           <div className={styles.visual}>
             <img
-              src={heroImage}
+              src="../../assets/hero-image.svg"
               alt="Notebook"
               width="380"
               height="300"
