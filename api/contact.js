@@ -16,7 +16,7 @@ export default async function handler(req, res) {
   try {
     await resend.emails.send({
       from: "Vychod Digital <onboarding@resend.dev>",
-      to: "hello@vychoddigital.sk",
+      to: "gulyayevaalisa@gmail.com",
       subject: "Nová správa z webu",
       html: `
         <h2>Nová správa</h2>
