@@ -47,8 +47,8 @@ export default function Hero() {
             <img
               src={heroImage}
               alt="Notebook"
-              width="380"
-              height="300"
+              width="372"
+              height="299"
               fetchPriority="high"
             />
           </div>
