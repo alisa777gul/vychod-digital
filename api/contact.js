@@ -9,11 +9,12 @@ export default async function handler(req, res) {
   }
 
   try {
-    const data = req.body || {};
+    const body = req.body || {};
 
     const {
       name,
       email,
+      message,
       phone,
       company,
       type,
@@ -26,54 +27,53 @@ export default async function handler(req, res) {
       budget,
       deadline,
       extra,
-    } = data;
+    } = body;
 
-    if (!name || !email || !description) {
-      return res.status(400).json({ error: "Missing fields" });
+    if (!name || !email) {
+      return res.status(400).json({ error: "Missing name/email" });
     }
 
-    const emailHTML = `
-      <div style="font-family: Arial; padding: 20px;">
-        <h2>📩 Nový projektový brief</h2>
+    const isBrief = Boolean(description || type || goal);
 
-        <p><b>Meno:</b> ${name}</p>
-        <p><b>Email:</b> ${email}</p>
-        <p><b>Telefón:</b> ${phone || "-"}</p>
-        <p><b>Firma:</b> ${company || "-"}</p>
-
-        <hr />
-
-        <p><b>Typ projektu:</b> ${type || "-"}</p>
-        <p><b>Popis:</b> ${description || "-"}</p>
-
-        <p><b>Cieľ:</b> ${goal || "-"}</p>
-        <p><b>Cieľová skupina:</b> ${audience || "-"}</p>
-
-        <p><b>Dizajn:</b> ${design || "-"}</p>
-
-        <p><b>Funkcie:</b> ${features?.length ? features.join(", ") : "-"}</p>
-
-        <p><b>Obsah:</b> ${content || "-"}</p>
-        <p><b>Rozpočet:</b> ${budget || "-"}</p>
-        <p><b>Termín:</b> ${deadline || "-"}</p>
-
-        <p><b>Doplňujúce info:</b> ${extra || "-"}</p>
-      </div>
-    `;
+    const html = isBrief
+      ? `
+        <div style="font-family:Arial;padding:20px">
+          <h2>📩 New PROJECT brief</h2>
+          <p><b>Name:</b> ${name}</p>
+          <p><b>Email:</b> ${email}</p>
+          <p><b>Phone:</b> ${phone || "-"}</p>
+          <p><b>Company:</b> ${company || "-"}</p>
+          <p><b>Type:</b> ${type || "-"}</p>
+          <p><b>Description:</b> ${description || "-"}</p>
+          <p><b>Goal:</b> ${goal || "-"}</p>
+          <p><b>Audience:</b> ${audience || "-"}</p>
+          <p><b>Design:</b> ${design || "-"}</p>
+          <p><b>Features:</b> ${features?.join(", ") || "-"}</p>
+          <p><b>Content:</b> ${content || "-"}</p>
+          <p><b>Budget:</b> ${budget || "-"}</p>
+          <p><b>Deadline:</b> ${deadline || "-"}</p>
+          <p><b>Extra:</b> ${extra || "-"}</p>
+        </div>
+      `
+      : `
+        <div style="font-family:Arial;padding:20px">
+          <h2>📩 New message</h2>
+          <p><b>Name:</b> ${name}</p>
+          <p><b>Email:</b> ${email}</p>
+          <p><b>Message:</b> ${message || "-"}</p>
+        </div>
+      `;
 
     await resend.emails.send({
       from: "Vychod Digital <onboarding@resend.dev>",
       to: "gulyayevaalisa@gmail.com",
-      subject: "📩 Nový projektový brief",
-      html: emailHTML,
+      subject: isBrief ? "📋 New Project Brief" : "📩 New Message",
+      html,
     });
 
     return res.status(200).json({ success: true });
   } catch (err) {
     console.error(err);
-
-    return res.status(500).json({
-      error: err.message || "Server error",
-    });
+    return res.status(500).json({ error: "Server error" });
   }
 }
