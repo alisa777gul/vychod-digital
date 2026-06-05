@@ -79,8 +79,8 @@ export default function Brief() {
             {/* CONTACT */}
             <h2>Kontaktné údaje</h2>
 
-            <input name="name" placeholder="Meno a priezvisko *" />
-            <input name="email" placeholder="E-mail *" />
+            <input name="name" placeholder="Meno a priezvisko *" required />
+            <input name="email" placeholder="E-mail *" required />
             <input name="phone" placeholder="Telefónne číslo" />
             <input name="company" placeholder="Názov spoločnosti" />
 
@@ -91,7 +91,6 @@ export default function Brief() {
               <option value="">Typ projektu</option>
               <option>Landing page</option>
               <option>Firemná webstránka</option>
-              <option>E-shop</option>
               <option>Portfólio</option>
               <option>Webová aplikácia</option>
               <option>Redizajn webu</option>
@@ -100,6 +99,7 @@ export default function Brief() {
             <textarea
               name="description"
               placeholder="Popíšte Vašu predstavu projektu *"
+              required
             />
 
             {/* GOAL */}
@@ -111,7 +111,7 @@ export default function Brief() {
             {/* DESIGN */}
             <h2>Dizajn</h2>
 
-            <select name="design">
+            <select name="design" required>
               <option value="">Štýl dizajnu</option>
               <option>Moderný</option>
               <option>Minimalistický</option>
@@ -139,9 +139,7 @@ export default function Brief() {
                 <input type="checkbox" name="features" value="Multilang" />{" "}
                 Viacjazyčnosť
               </label>
-              <label>
-                <input type="checkbox" name="features" value="CMS" /> CMS
-              </label>
+
               <label>
                 <input type="checkbox" name="features" value="SEO" /> SEO
               </label>
@@ -150,8 +148,8 @@ export default function Brief() {
             {/* CONTENT */}
             <h2>Obsah</h2>
 
-            <select name="content">
-              <option value="">Máte obsah?</option>
+            <select name="content" required>
+              <option value="">Máte obsah? *</option>
               <option>Áno</option>
               <option>Nie</option>
               <option>Čiastočne</option>
