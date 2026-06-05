@@ -6,6 +6,8 @@ export default function Footer() {
   const location = useLocation();
   const navigate = useNavigate();
 
+  const isBriefPage = location.pathname === "/brief";
+
   const goTo = (hash) => {
     if (location.pathname !== "/") {
       navigate("/");
@@ -25,15 +27,18 @@ export default function Footer() {
           </p>
         </div>
 
-        <div className={styles.links}>
-          <h4>Navigácia</h4>
+        {/* NAVIGATION — HIDE ON BRIEF */}
+        {!isBriefPage && (
+          <div className={styles.links}>
+            <h4>Navigácia</h4>
 
-          <a onClick={() => goTo("#home")}>Domov</a>
-          <a onClick={() => goTo("#sluzby")}>Služby</a>
-          <a onClick={() => goTo("#o-nas")}>O nás</a>
-          <a onClick={() => goTo("#projekty")}>Projekty</a>
-          <a onClick={() => goTo("#kontakt")}>Kontakt</a>
-        </div>
+            <a onClick={() => goTo("#home")}>Domov</a>
+            <a onClick={() => goTo("#sluzby")}>Služby</a>
+            <a onClick={() => goTo("#o-nas")}>O nás</a>
+            <a onClick={() => goTo("#projekty")}>Projekty</a>
+            <a onClick={() => goTo("#kontakt")}>Kontakt</a>
+          </div>
+        )}
 
         <div className={styles.contact}>
           <h4>Kontakt</h4>

@@ -13,11 +13,13 @@ const navItems = [
 ];
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-
   const location = useLocation();
   const navigate = useNavigate();
+
+  const isBriefPage = location.pathname === "/brief";
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const closeMenu = () => setIsMenuOpen(false);
 
@@ -43,66 +45,69 @@ export default function Header() {
     const onScroll = () => setIsScrolled(window.scrollY > 40);
     onScroll();
     window.addEventListener("scroll", onScroll);
-
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
-    <>
-      <header
-        className={`${styles.header} ${isScrolled ? styles.scrolled : ""}`}
+    <header className={`${styles.header} ${isScrolled ? styles.scrolled : ""}`}>
+      {/* LOGO */}
+      <a
+        href="/"
+        className={styles.logo}
+        onClick={(e) => {
+          e.preventDefault();
+          goHome();
+        }}
       >
-        {/* LOGO */}
-        <a
-          href="/"
-          className={styles.logo}
-          onClick={(e) => {
-            e.preventDefault();
-            goHome();
-          }}
-        >
-          <img src="/logo.svg" alt="Logo" />
-        </a>
+        <img src="/logo.svg" alt="Logo" />
+      </a>
 
-        <button
-          className={`${styles.burger} ${isMenuOpen ? styles.burgerOpen : ""}`}
-          onClick={() => setIsMenuOpen((prev) => !prev)}
-          aria-label="menu"
-        >
-          <span className={styles.burgerLine} />
-          <span className={styles.burgerLine} />
-          <span className={styles.burgerLine} />
-        </button>
-
-        {/* MENU */}
-        <div className={`${styles.menu} ${isMenuOpen ? styles.menuOpen : ""}`}>
-          <nav className={styles.nav}>
-            {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                onClick={(e) => {
-                  e.preventDefault();
-                  goHomeAndScroll(item.href);
-                }}
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
-
-          <Button
-            onClick={(e) => {
-              e.preventDefault();
-              goHomeAndScroll("#kontakt");
-            }}
+      {/* NAVIGATION ONLY ON HOME */}
+      {!isBriefPage && (
+        <>
+          <button
+            className={`${styles.burger} ${isMenuOpen ? styles.burgerOpen : ""}`}
+            onClick={() => setIsMenuOpen((prev) => !prev)}
+            aria-label="menu"
           >
-            Napíšte nám
-          </Button>
-        </div>
-      </header>
+            <span className={styles.burgerLine} />
+            <span className={styles.burgerLine} />
+            <span className={styles.burgerLine} />
+          </button>
 
-      {isMenuOpen && <button className={styles.backdrop} onClick={closeMenu} />}
-    </>
+          <div
+            className={`${styles.menu} ${isMenuOpen ? styles.menuOpen : ""}`}
+          >
+            <nav className={styles.nav}>
+              {navItems.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    goHomeAndScroll(item.href);
+                  }}
+                >
+                  {item.label}
+                </a>
+              ))}
+            </nav>
+
+            <Button
+              onClick={(e) => {
+                e.preventDefault();
+                goHomeAndScroll("#kontakt");
+              }}
+            >
+              Napíšte nám
+            </Button>
+          </div>
+
+          {isMenuOpen && (
+            <button className={styles.backdrop} onClick={closeMenu} />
+          )}
+        </>
+      )}
+    </header>
   );
 }
