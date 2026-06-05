@@ -112,7 +112,7 @@ export default function Brief() {
             <h2>Dizajn</h2>
 
             <select name="design" required>
-              <option value="">Štýl dizajnu</option>
+              <option value="">Štýl dizajnu *</option>
               <option>Moderný</option>
               <option>Minimalistický</option>
               <option>Firemný</option>
