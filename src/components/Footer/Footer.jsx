@@ -14,7 +14,6 @@ export default function Footer() {
       setTimeout(() => scrollToSection(hash), 100);
       return;
     }
-
     scrollToSection(hash);
   };
 
@@ -27,7 +26,7 @@ export default function Footer() {
           </p>
         </div>
 
-        {/* NAVIGATION — HIDE ON BRIEF */}
+        {/* NORMAL MODE */}
         {!isBriefPage && (
           <div className={styles.links}>
             <h4>Navigácia</h4>
@@ -37,6 +36,19 @@ export default function Footer() {
             <a onClick={() => goTo("#o-nas")}>O nás</a>
             <a onClick={() => goTo("#projekty")}>Projekty</a>
             <a onClick={() => goTo("#kontakt")}>Kontakt</a>
+          </div>
+        )}
+
+        {/* BRIEF MODE (compact footer) */}
+        {isBriefPage && (
+          <div className={styles.links}>
+            <h4>Potrebujete pomoc?</h4>
+
+            <a href="mailto:hello@vychoddigital.sk">hello@vychoddigital.sk</a>
+
+            <button onClick={() => navigate("/")} className={styles.backButton}>
+              ← Späť na hlavnú stránku
+            </button>
           </div>
         )}
 

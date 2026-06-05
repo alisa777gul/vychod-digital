@@ -111,3 +111,29 @@
     gap: 50px;
   }
 }
+.backButton {
+  background: transparent;
+  border: none;
+
+  color: #fff;
+  font-weight: 800;
+  font-size: 14px;
+
+  cursor: pointer;
+
+  padding: 0;
+  margin-top: 10px;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease;
+}
+
+.backButton:hover {
+  color: #df0014;
+  transform: translateX(-4px);
+}
