@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useRef, useState } from "react";
 import css from "./Contact.module.css";
+import { Link } from "react-router-dom";
 
 const Contact = () => {
   const form = useRef();
@@ -71,6 +72,14 @@ const Contact = () => {
               <h3>Email</h3>
               <a href="mailto:hello@vychoddigital.sk">hello@vychoddigital.sk</a>
             </div>
+            <p className={css.formLinkText}>
+              Povedzte nám viac o Vašej predstave projektu:
+            </p>
+            <div className={css.card}>
+              <Link to="/brief" className={css.formLink}>
+                Začať projekt
+              </Link>
+            </div>
           </div>
 
           <form ref={form} onSubmit={sendEmail} className={css.form}>
@@ -82,7 +91,6 @@ const Contact = () => {
               {loading ? "Odosielam..." : "Odoslať"}
             </button>
 
-            {/* 👇 CUSTOM NOTIFICATION */}
             {status === "success" && (
               <p className={`${css.notice} ${css.success}`}>
                 ✔ Správa bola úspešne odoslaná

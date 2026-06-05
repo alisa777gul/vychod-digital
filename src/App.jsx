@@ -1,56 +1,69 @@
-import { useEffect, useState } from "react";
-import Header from "./components/Header/Header";
-import Hero from "./components/Hero/Hero";
-import Services from "./components/Services/Services";
-import WhyUs from "./components/WhyUs/WhyUs";
-import Projects from "./components/Projects/Projects";
-import Contact from "./components/Contact/Contact";
-import Footer from "./components/Footer/Footer";
-import "./App.css";
+import { Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
+import { useLayoutEffect } from "react";
+
+import Home from "./pages/Home/Home";
+import Brief from "./pages/Brief/Brief";
+
+/* 🔥 SCROLL RESET */
+function ScrollToTop() {
+  const location = useLocation();
+
+  useLayoutEffect(() => {
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }, [location.pathname]);
+
+  return null;
+}
+
+function Page({ children }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.98, filter: "blur(8px)" }}
+      animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+      exit={{ opacity: 0, scale: 1.02, filter: "blur(10px)" }}
+      transition={{
+        duration: 0.45,
+        ease: [0.22, 1, 0.36, 1], // Apple-like easing
+      }}
+      style={{
+        width: "100%",
+        minHeight: "100vh",
+        background: "#fff",
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+}
 
 export default function App() {
-  const [loading, setLoading] = useState(true);
-  const [fadeOut, setFadeOut] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setFadeOut(true);
-
-      setTimeout(() => {
-        setLoading(false);
-      }, 400);
-    }, 800);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (loading) {
-    return (
-      <div className={`loader ${fadeOut ? "fadeOut" : ""}`}>
-        <div className="loaderInner">
-          <div className="logoPulse">
-            <img src="/logo.svg" alt="logo" />
-          </div>
-          <div className="loaderText">Východ Digital</div>
-          <div className="loaderLine" />
-        </div>
-      </div>
-    );
-  }
+  const location = useLocation();
 
   return (
-    <div className="app show">
-      <Header />
+    <>
+      <ScrollToTop />
 
-      <main>
-        <Hero />
-        <Services />
-        <WhyUs />
-        <Projects />
-        <Contact />
-      </main>
-
-      <Footer />
-    </div>
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
+          <Route
+            path="/"
+            element={
+              <Page>
+                <Home />
+              </Page>
+            }
+          />
+          <Route
+            path="/brief"
+            element={
+              <Page>
+                <Brief />
+              </Page>
+            }
+          />
+        </Routes>
+      </AnimatePresence>
+    </>
   );
 }

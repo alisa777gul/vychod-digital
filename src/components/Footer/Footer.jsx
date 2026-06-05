@@ -1,29 +1,40 @@
 import styles from "./Footer.module.css";
+import { useLocation, useNavigate } from "react-router-dom";
+import { scrollToSection } from "../../utils/scrollToSection";
 
 export default function Footer() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const goTo = (hash) => {
+    if (location.pathname !== "/") {
+      navigate("/");
+      setTimeout(() => scrollToSection(hash), 100);
+      return;
+    }
+
+    scrollToSection(hash);
+  };
+
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
-        {/* BRAND */}
         <div className={styles.brand}>
           <p>
-            Východ <span>Digital</span> – digitálna agentúra zameraná na weby,
-            ktoré prinášajú výsledky, nie len dizajn.
+            Východ <span>Digital</span> – digitálna agentúra
           </p>
         </div>
 
-        {/* NAV */}
         <div className={styles.links}>
           <h4>Navigácia</h4>
 
-          <a href="#home">Domov</a>
-          <a href="#sluzby">Služby</a>
-          <a href="#o-nas">O nás</a>
-          <a href="#projekty">Projekty</a>
-          <a href="#kontakt">Kontakt</a>
+          <a onClick={() => goTo("#home")}>Domov</a>
+          <a onClick={() => goTo("#sluzby")}>Služby</a>
+          <a onClick={() => goTo("#o-nas")}>O nás</a>
+          <a onClick={() => goTo("#projekty")}>Projekty</a>
+          <a onClick={() => goTo("#kontakt")}>Kontakt</a>
         </div>
 
-        {/* CONTACT */}
         <div className={styles.contact}>
           <h4>Kontakt</h4>
 
@@ -33,9 +44,7 @@ export default function Footer() {
       </div>
 
       <div className={styles.bottom}>
-        <p>
-          © {new Date().getFullYear()} Východ Digital. Všetky práva vyhradené.
-        </p>
+        <p>© {new Date().getFullYear()} Východ Digital</p>
       </div>
     </footer>
   );

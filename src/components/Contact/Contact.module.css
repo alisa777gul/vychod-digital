@@ -57,7 +57,11 @@
   font-weight: 700;
   text-decoration: none;
 }
-
+.formLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 /* FORM */
 .form {
   display: flex;

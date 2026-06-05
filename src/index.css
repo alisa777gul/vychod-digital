@@ -3,17 +3,17 @@
   color: #111111;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 html,
 body {
   height: 100%;
   margin: 0;
   padding: 0;
-  scroll-behavior: smooth;
 }
-
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 #root {
   min-height: 100vh;
 }

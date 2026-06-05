@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Button from "../Button/Button";
 import styles from "./Header.module.css";
 import { scrollToSection } from "../../utils/scrollToSection";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const navItems = [
   { label: "Domov", href: "#home" },
@@ -15,21 +16,31 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const closeMenu = () => setIsMenuOpen(false);
 
-  const handleScroll = (href) => {
+  const goHomeAndScroll = (href) => {
     closeMenu();
+
+    if (location.pathname !== "/") {
+      navigate("/");
+      setTimeout(() => scrollToSection(href), 100);
+      return;
+    }
+
     scrollToSection(href);
   };
 
-  const handleTop = () => {
+  const goHome = () => {
     closeMenu();
+    navigate("/");
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 40);
-
     onScroll();
     window.addEventListener("scroll", onScroll);
 
@@ -43,11 +54,11 @@ export default function Header() {
       >
         {/* LOGO */}
         <a
-          href="#home"
+          href="/"
           className={styles.logo}
           onClick={(e) => {
             e.preventDefault();
-            handleTop();
+            goHome();
           }}
         >
           <img src="/logo.svg" alt="Logo" />
@@ -57,11 +68,10 @@ export default function Header() {
         <button
           className={`${styles.burger} ${isMenuOpen ? styles.burgerOpen : ""}`}
           onClick={() => setIsMenuOpen((prev) => !prev)}
-          aria-label="menu"
         >
-          <span className={styles.burgerLine}></span>
-          <span className={styles.burgerLine}></span>
-          <span className={styles.burgerLine}></span>
+          <span />
+          <span />
+          <span />
         </button>
 
         {/* MENU */}
@@ -73,9 +83,7 @@ export default function Header() {
                 href={item.href}
                 onClick={(e) => {
                   e.preventDefault();
-
-                  if (item.href === "#home") handleTop();
-                  else handleScroll(item.href);
+                  goHomeAndScroll(item.href);
                 }}
               >
                 {item.label}
@@ -84,10 +92,9 @@ export default function Header() {
           </nav>
 
           <Button
-            href="#kontakt"
             onClick={(e) => {
               e.preventDefault();
-              handleScroll("#kontakt");
+              goHomeAndScroll("#kontakt");
             }}
           >
             Napíšte nám
@@ -95,7 +102,6 @@ export default function Header() {
         </div>
       </header>
 
-      {/* BACKDROP */}
       {isMenuOpen && <button className={styles.backdrop} onClick={closeMenu} />}
     </>
   );
