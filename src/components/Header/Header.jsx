@@ -64,14 +64,14 @@ export default function Header() {
           <img src="/logo.svg" alt="Logo" />
         </a>
 
-        {/* BURGER */}
         <button
           className={`${styles.burger} ${isMenuOpen ? styles.burgerOpen : ""}`}
           onClick={() => setIsMenuOpen((prev) => !prev)}
+          aria-label="menu"
         >
-          <span />
-          <span />
-          <span />
+          <span className={styles.burgerLine} />
+          <span className={styles.burgerLine} />
+          <span className={styles.burgerLine} />
         </button>
 
         {/* MENU */}

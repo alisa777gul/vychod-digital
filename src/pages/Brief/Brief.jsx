@@ -65,7 +65,7 @@ export default function Brief() {
         <div className="container">
           <button
             type="button"
-            onClick={() => navigate("/", { replace: false })}
+            onClick={() => navigate("/")}
             className={css.backBtn}
           >
             Späť

@@ -5,32 +5,29 @@ import { useLayoutEffect } from "react";
 import Home from "./pages/Home/Home";
 import Brief from "./pages/Brief/Brief";
 
-/* 🔥 SCROLL RESET */
+/* 🔥 always start top */
 function ScrollToTop() {
   const location = useLocation();
 
   useLayoutEffect(() => {
-    window.scrollTo({ top: 0, behavior: "auto" });
+    window.scrollTo(0, 0);
   }, [location.pathname]);
 
   return null;
 }
 
+/* ✨ nicer but still safe animation */
 function Page({ children }) {
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.98, filter: "blur(8px)" }}
-      animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-      exit={{ opacity: 0, scale: 1.02, filter: "blur(10px)" }}
+      initial={{ opacity: 0, y: 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -8 }}
       transition={{
-        duration: 0.45,
-        ease: [0.22, 1, 0.36, 1], // Apple-like easing
+        duration: 0.28,
+        ease: [0.25, 0.8, 0.25, 1],
       }}
-      style={{
-        width: "100%",
-        minHeight: "100vh",
-        background: "#fff",
-      }}
+      style={{ width: "100%" }}
     >
       {children}
     </motion.div>
