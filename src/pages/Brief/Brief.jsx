@@ -1,14 +1,68 @@
 /* eslint-disable no-unused-vars */
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import css from "./Brief.module.css";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import { useNavigate } from "react-router-dom";
+
 export default function Brief() {
   const formRef = useRef();
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState(null);
   const navigate = useNavigate();
+
+  // =========================
+  // 🔥 LOAD DRAFT (on open)
+  // =========================
+  useEffect(() => {
+    const saved = localStorage.getItem("brief-draft");
+    if (!saved || !formRef.current) return;
+
+    const data = JSON.parse(saved);
+    const form = formRef.current;
+
+    Object.keys(data).forEach((key) => {
+      const el = form.elements[key];
+      if (!el) return;
+
+      if (el.type === "checkbox") {
+        const values = data[key] || [];
+        el.checked = values.includes(el.value);
+      } else {
+        el.value = data[key] || "";
+      }
+    });
+  }, []);
+
+  // =========================
+  // 💾 AUTO SAVE
+  // =========================
+  const saveDraft = () => {
+    const data = new FormData(formRef.current);
+
+    const formData = {
+      name: data.get("name"),
+      email: data.get("email"),
+      phone: data.get("phone"),
+      company: data.get("company"),
+      type: data.get("type"),
+      description: data.get("description"),
+      goal: data.get("goal"),
+      audience: data.get("audience"),
+      design: data.get("design"),
+      features: data.getAll("features"),
+      content: data.get("content"),
+      budget: data.get("budget"),
+      deadline: data.get("deadline"),
+      extra: data.get("extra"),
+    };
+
+    localStorage.setItem("brief-draft", JSON.stringify(formData));
+  };
+
+  // =========================
+  // 🚀 SEND FORM
+  // =========================
   const sendForm = async (e) => {
     e.preventDefault();
 
@@ -49,6 +103,9 @@ export default function Brief() {
 
       setStatus("success");
       formRef.current.reset();
+
+      // 🔥 clear draft after success
+      localStorage.removeItem("brief-draft");
     } catch (err) {
       setStatus("error");
     } finally {
@@ -70,12 +127,20 @@ export default function Brief() {
           >
             Späť
           </button>
+
           <h1 className={css.title}>Projektový brief</h1>
+
           <p className={css.subtitle}>
             Povedzte nám viac o Vašom projekte a pripravíme Vám riešenie na
             mieru.
           </p>
-          <form ref={formRef} onSubmit={sendForm} className={css.form}>
+
+          <form
+            ref={formRef}
+            onSubmit={sendForm}
+            onChange={saveDraft}
+            className={css.form}
+          >
             {/* CONTACT */}
             <h2>Kontaktné údaje</h2>
 
@@ -139,7 +204,6 @@ export default function Brief() {
                 <input type="checkbox" name="features" value="Multilang" />{" "}
                 Viacjazyčnosť
               </label>
-
               <label>
                 <input type="checkbox" name="features" value="SEO" /> SEO
               </label>
