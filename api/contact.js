@@ -9,42 +9,68 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { name, email, message } = req.body || {};
+    const data = req.body || {};
 
-    if (!name || !email || !message) {
+    const {
+      name,
+      email,
+      phone,
+      company,
+      type,
+      description,
+      goal,
+      audience,
+      design,
+      features,
+      content,
+      budget,
+      deadline,
+      extra,
+    } = data;
+
+    if (!name || !email || !description) {
       return res.status(400).json({ error: "Missing fields" });
     }
 
-    const cleanEmail = String(email).trim().toLowerCase();
+    const emailHTML = `
+      <div style="font-family: Arial; padding: 20px;">
+        <h2>📩 Nový projektový brief</h2>
 
-    if (!cleanEmail.includes("@")) {
-      return res.status(400).json({ error: "Invalid email" });
-    }
+        <p><b>Meno:</b> ${name}</p>
+        <p><b>Email:</b> ${email}</p>
+        <p><b>Telefón:</b> ${phone || "-"}</p>
+        <p><b>Firma:</b> ${company || "-"}</p>
 
-    console.log("NEW LEAD:", { name, email: cleanEmail });
+        <hr />
 
-    const ownerEmail = await resend.emails.send({
+        <p><b>Typ projektu:</b> ${type || "-"}</p>
+        <p><b>Popis:</b> ${description || "-"}</p>
+
+        <p><b>Cieľ:</b> ${goal || "-"}</p>
+        <p><b>Cieľová skupina:</b> ${audience || "-"}</p>
+
+        <p><b>Dizajn:</b> ${design || "-"}</p>
+
+        <p><b>Funkcie:</b> ${features?.length ? features.join(", ") : "-"}</p>
+
+        <p><b>Obsah:</b> ${content || "-"}</p>
+        <p><b>Rozpočet:</b> ${budget || "-"}</p>
+        <p><b>Termín:</b> ${deadline || "-"}</p>
+
+        <p><b>Doplňujúce info:</b> ${extra || "-"}</p>
+      </div>
+    `;
+
+    await resend.emails.send({
       from: "Vychod Digital <onboarding@resend.dev>",
       to: "gulyayevaalisa@gmail.com",
-      subject: "📩 Nová správa z webu",
-      html: `
-        <div style="font-family:Arial;padding:20px;">
-          <h2>Nová správa</h2>
-
-          <p><b>Meno:</b> ${name}</p>
-          <p><b>Email:</b> ${cleanEmail}</p>
-
-          <p><b>Správa:</b></p>
-          <p>${message}</p>
-        </div>
-      `,
+      subject: "📩 Nový projektový brief",
+      html: emailHTML,
     });
-
-    console.log("OWNER EMAIL SENT:", ownerEmail);
 
     return res.status(200).json({ success: true });
   } catch (err) {
-    console.error("RESEND ERROR:", err);
+    console.error(err);
 
     return res.status(500).json({
       error: err.message || "Server error",
