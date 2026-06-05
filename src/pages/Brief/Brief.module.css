@@ -89,7 +89,7 @@
 .checks label {
   display: grid;
   grid-template-columns: 18px 1fr;
-  gap: 10px;
+  gap: 20px;
   align-items: center;
   font-size: 14px;
   font-weight: 600;
