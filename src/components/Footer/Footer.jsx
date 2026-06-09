@@ -1,7 +1,7 @@
 import styles from "./Footer.module.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import { scrollToSection } from "../../utils/scrollToSection";
-
+import instagramIcon from "../../assets/instagram-logo.svg?react";
 export default function Footer() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -44,7 +44,7 @@ export default function Footer() {
           <div className={styles.links}>
             <h4>Potrebujete pomoc?</h4>
 
-            <a href="mailto:hello@vychoddigital.sk">hello@vychoddigital.sk</a>
+            <a href="mailto:info@vychoddigital.sk">info@vychoddigital.sk</a>
 
             <button onClick={() => navigate("/")} className={styles.backButton}>
               ← Späť na hlavnú stránku
@@ -56,7 +56,15 @@ export default function Footer() {
           <h4>Kontakt</h4>
 
           <a href="mailto:hello@vychoddigital.sk">hello@vychoddigital.sk</a>
-          <a href="tel:+421900000000">+421 900 000 000</a>
+          <a
+            href="https://www.instagram.com/vychod.digital"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.instagram}
+          >
+            <img src={instagramIcon} alt="Instagram" className={styles.icon} />
+            <span>Instagram</span>
+          </a>
         </div>
       </div>
 

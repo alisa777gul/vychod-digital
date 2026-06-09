@@ -137,3 +137,21 @@
   color: #df0014;
   transform: translateX(-4px);
 }
+.instagram {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+
+  text-decoration: none;
+  color: white;
+
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  filter: brightness(0) invert(1);
+}
