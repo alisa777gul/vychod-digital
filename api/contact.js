@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -34,7 +35,6 @@ export default async function handler(req, res) {
 
     const isBrief = Boolean(description || type || goal);
 
-    // 📩 EMAIL TEBE (ADMIN)
     const adminHtml = isBrief
       ? `
         <div style="font-family:Arial;padding:20px">
@@ -64,55 +64,50 @@ export default async function handler(req, res) {
         </div>
       `;
 
-    await resend.emails.send({
-      from: "Východ Digital <onboarding@resend.dev>",
+    // 📩 EMAIL ТЕБЕ
+    const adminEmail = await resend.emails.send({
+      from: "Východ Digital <hello@vychoddigital.sk>",
       to: "hello@vychoddigital.sk",
       replyTo: email,
       subject: isBrief ? "📋 Nový projektový dopyt" : "📩 Nová správa z webu",
       html: adminHtml,
     });
 
-    // 💌 AUTOREPLY CLIENT (SLOVAK - FORMAL VYKANIE)
-    await resend.emails.send({
-      from: "Východ Digital <onboarding@resend.dev>",
+    // 💌 АВТООТВЕТ КЛИЕНТУ
+    const autoEmail = await resend.emails.send({
+      from: "Východ Digital <hello@vychoddigital.sk>",
       to: email,
       subject: "Potvrdzujeme prijatie Vašej správy 🚀",
       html: `
-        <div style="font-family:Arial;padding:24px;line-height:1.6;color:#111">
+        <div style="font-family:Arial;padding:24px;line-height:1.6">
           <h2>Dobrý deň ${name}, 👋</h2>
 
           <p>ďakujeme, že ste kontaktovali <b>Východ Digital</b>.</p>
 
-          <p>Vaša správa bola úspešne prijatá a v najbližšom čase sa Vám ozveme.</p>
+          <p>Vaša správa bola úspešne prijatá.</p>
+
+          <p><b>Odpovieme Vám do 24 hodín.</b></p>
 
           <br/>
 
-          <p><b>Čo bude nasledovať?</b></p>
-          <p>
-            ✔ Prezrieme si Vašu požiadavku<br/>
-            ✔ Pripravíme návrh riešenia alebo odpoveď<br/>
-            ✔ Ozveme sa Vám do 24 hodín
-          </p>
-
-          <br/>
-
-          <p>
-            Ak by ste chceli doplniť informácie, môžete odpovedať priamo na tento e-mail.
-          </p>
-
-          <br/>
-
-          <p style="margin-top:20px">
-            S pozdravom,<br/>
-            <b>Tím Východ Digital</b>
-          </p>
+          <p>S pozdravom,<br/><b>Tím Východ Digital</b></p>
         </div>
       `,
     });
 
-    return res.status(200).json({ success: true });
+    // 🔥 DŮLEŽITÉ LOGY
+    console.log("ADMIN EMAIL RESULT:", adminEmail);
+    console.log("AUTO EMAIL RESULT:", autoEmail);
+
+    return res.status(200).json({
+      success: true,
+      adminEmail,
+      autoEmail,
+    });
   } catch (err) {
-    console.error(err);
-    return res.status(500).json({ error: "Server error" });
+    console.error("EMAIL ERROR:", err);
+    return res
+      .status(500)
+      .json({ error: "Server error", details: err.message });
   }
 }
