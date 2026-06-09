@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -35,10 +34,11 @@ export default async function handler(req, res) {
 
     const isBrief = Boolean(description || type || goal);
 
-    const html = isBrief
+    // 📩 EMAIL TEBE (ADMIN)
+    const adminHtml = isBrief
       ? `
         <div style="font-family:Arial;padding:20px">
-          <h2>📩 New PROJECT brief</h2>
+          <h2>📋 New PROJECT brief</h2>
           <p><b>Name:</b> ${name}</p>
           <p><b>Email:</b> ${email}</p>
           <p><b>Phone:</b> ${phone || "-"}</p>
@@ -65,10 +65,49 @@ export default async function handler(req, res) {
       `;
 
     await resend.emails.send({
-      from: "Vychod Digital <onboarding@resend.dev>",
+      from: "Východ Digital <onboarding@resend.dev>",
       to: "hello@vychoddigital.sk",
-      subject: isBrief ? "📋 New Project Brief" : "📩 New Message",
-      html,
+      replyTo: email,
+      subject: isBrief ? "📋 Nový projektový dopyt" : "📩 Nová správa z webu",
+      html: adminHtml,
+    });
+
+    // 💌 AUTOREPLY CLIENT (SLOVAK - FORMAL VYKANIE)
+    await resend.emails.send({
+      from: "Východ Digital <onboarding@resend.dev>",
+      to: email,
+      subject: "Potvrdzujeme prijatie Vašej správy 🚀",
+      html: `
+        <div style="font-family:Arial;padding:24px;line-height:1.6;color:#111">
+          <h2>Dobrý deň ${name}, 👋</h2>
+
+          <p>ďakujeme, že ste kontaktovali <b>Východ Digital</b>.</p>
+
+          <p>Vaša správa bola úspešne prijatá a v najbližšom čase sa Vám ozveme.</p>
+
+          <br/>
+
+          <p><b>Čo bude nasledovať?</b></p>
+          <p>
+            ✔ Prezrieme si Vašu požiadavku<br/>
+            ✔ Pripravíme návrh riešenia alebo odpoveď<br/>
+            ✔ Ozveme sa Vám do 24 hodín
+          </p>
+
+          <br/>
+
+          <p>
+            Ak by ste chceli doplniť informácie, môžete odpovedať priamo na tento e-mail.
+          </p>
+
+          <br/>
+
+          <p style="margin-top:20px">
+            S pozdravom,<br/>
+            <b>Tím Východ Digital</b>
+          </p>
+        </div>
+      `,
     });
 
     return res.status(200).json({ success: true });
