@@ -59,11 +59,9 @@ const Contact = () => {
         </h2>
 
         <p className={css.subtitle}>
-          Chcete webstránku, ktorá vám prinesie zákazníkov?
-          <br />
-          Ozvite sa nám a pripravíme vám návrh riešenia na mieru – bezplatne a
-          nezáväzne. <br />
-          <span> Odpovieme do 24 hodín.</span>
+          <span> Pripravení získať viac zákazníkov online? </span> <br />
+          Pošlite nám nezáväznú správu a do 24 hodín vám navrhneme riešenie na
+          mieru.
         </p>
 
         <div className={css.grid}>
@@ -77,7 +75,7 @@ const Contact = () => {
             </p>
             <div className={css.card}>
               <Link to="/brief" className={css.formLink}>
-                Začať projekt
+                Získať bezplatnú konzultáciu
               </Link>
             </div>
           </div>

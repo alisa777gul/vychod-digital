@@ -47,7 +47,7 @@ export default function Footer() {
             <a href="mailto:info@vychoddigital.sk">info@vychoddigital.sk</a>
 
             <button onClick={() => navigate("/")} className={styles.backButton}>
-              ← Späť na hlavnú stránku
+              ← Späť
             </button>
           </div>
         )}

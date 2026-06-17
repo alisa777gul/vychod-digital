@@ -9,14 +9,16 @@ export default function Hero() {
         <div className={styles.heroInner}>
           <div className={styles.content}>
             <h1>
-              Digitálne riešenia, <br />
-              ktoré menia návštevníkov <br />
-              <span>na zákazníkov.</span>
+              Vaša webstránka
+              <br />
+              by mala predávať. <br />
+              <span>Nie len existovať.</span>
             </h1>
 
             <p>
-              Navrhujeme moderné a rýchle weby pre podnikateľov na Slovensku,
-              ktoré budujú dôveru a zvyšujú počet dopytov.
+              Ak vás ľudia nenájdu online, nájdu vašu konkurenciu. <br />{" "}
+              Tvoríme webstránky, ktoré budujú dôveru, získavajú dopyty a
+              pomáhajú firmám rásť.
             </p>
 
             <div className={styles.actions}>
@@ -27,7 +29,7 @@ export default function Hero() {
                   scrollToSection("#kontakt");
                 }}
               >
-                Chcem návrh webstránky
+                Získať bezplatný návrh
               </Button>
 
               <Button
@@ -38,7 +40,7 @@ export default function Hero() {
                   scrollToSection("#projekty");
                 }}
               >
-                Pozrieť prácu
+                Pozrieť realizácie
               </Button>
             </div>
           </div>

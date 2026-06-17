@@ -1,18 +1,18 @@
 export const reasons = [
   {
-    title: "Dizajn, ktorý predáva",
-    text: "Každý detail má svoj význam a cieľ.",
+    title: "Viac dopytov",
+    text: "Web, ktorý z návštevníkov robí klientov.",
   },
   {
-    title: "Dôraz na výsledky",
-    text: "Nerobíme len weby. Riešime výsledky.",
+    title: "Silnejší imidž",
+    text: "Vyzerajte ako firma, ktorej ľudia dôverujú.",
   },
   {
-    title: "Rýchla komunikácia",
-    text: "Sme dostupní, flexibilní a spoľahliví.",
+    title: "Rýchlo online",
+    text: "Spustenie webu bez zbytočných prieťahov.",
   },
   {
-    title: "Moderný prístup",
-    text: "Sledujeme trendy a prinášame moderné riešenia.",
+    title: "Pripravené na rast",
+    text: "Moderný výkon a dizajn pre budúcnosť.",
   },
 ];

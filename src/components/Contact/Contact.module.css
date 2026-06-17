@@ -6,32 +6,27 @@
   max-width: 1100px;
 }
 
-.contact h2 span {
-  color: #df0014;
-}
-
 .subtitle {
   text-align: center;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.6;
   max-width: 600px;
   margin: 0 auto 30px;
-  font-weight: 600;
 }
 .subtitle span {
   color: #df0014;
 }
-/* GRID */
+
 .grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 30px;
 }
 
-/* INFO */
 .info {
   display: grid;
   gap: 16px;
+  font-size: 16px;
 }
 
 .card {
@@ -48,13 +43,14 @@
 
 .card h3 {
   margin-bottom: 6px;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 900;
 }
 
 .card a {
   color: #df0014;
   font-weight: 700;
+  font-size: 14px;
   text-decoration: none;
 }
 .formLink {
@@ -62,7 +58,7 @@
   justify-content: center;
   align-items: center;
 }
-/* FORM */
+
 .form {
   display: flex;
   flex-direction: column;
@@ -73,7 +69,7 @@
 .form textarea {
   border: 2px solid #111;
   padding: 12px;
-  font-size: 14px;
+  font-size: 16px;
   outline: none;
   transition: 0.2s ease;
   font-family: inherit;
@@ -88,7 +84,7 @@
 .form button {
   margin-top: 10px;
   padding: 12px;
-  font-size: 14px;
+  font-size: 16px;
   background: #df0014;
   color: #fff;
   font-weight: 900;
@@ -108,23 +104,65 @@
   transform: none;
 }
 
-/* TABLET */
 @media (min-width: 768px) {
   .grid {
     grid-template-columns: 1fr 1fr;
     align-items: start;
   }
+  .subtitle {
+    font-size: 22px;
+  }
+  .card h3 {
+    font-size: 20px;
+  }
+  .info {
+    font-size: 20px;
+  }
+  .card a {
+    font-size: 18px;
+  }
+
+  .form input,
+  .form textarea {
+    font-size: 20px;
+  }
+
+  .form button {
+    font-size: 20px;
+  }
+}
+@media (min-width: 1024px) {
+  .subtitle {
+    font-size: 24px;
+  }
+  .card h3 {
+    font-size: 22px;
+  }
+  .info {
+    font-size: 22px;
+  }
+  .card a {
+    font-size: 20px;
+  }
+
+  .form input,
+  .form textarea {
+    font-size: 22px;
+  }
+
+  .form button {
+    font-size: 22px;
+  }
 }
 .notice {
   margin-top: 12px;
   padding: 10px 12px;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
   border: 2px solid #111;
   animation: pop 0.25s ease;
 }
 
-/* SUCCESS */
 .success {
   background: #111;
   color: #fff;
@@ -132,7 +170,6 @@
   box-shadow: 4px 4px 0 #df0014;
 }
 
-/* ERROR */
 .error {
   background: #fff;
   color: #df0014;

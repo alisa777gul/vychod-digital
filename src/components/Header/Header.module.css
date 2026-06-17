@@ -264,7 +264,15 @@
   .backdrop {
     display: none;
   }
+  .logo {
+    width: 90px;
+    height: 90px;
+  }
 
+  .logo img {
+    width: 88px;
+    height: 88px;
+  }
   .menu {
     position: static;
     z-index: auto;
@@ -279,6 +287,7 @@
     opacity: 1;
     pointer-events: auto;
     transform: none;
+    font-size: 20px;
   }
 
   .nav {
@@ -289,7 +298,7 @@
 
   .nav a,
   .navButton {
-    font-size: 15px;
+    font-size: 22px;
   }
 
   .nav a:hover,

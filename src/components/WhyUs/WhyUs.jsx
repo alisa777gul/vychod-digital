@@ -9,15 +9,15 @@ export default function WhyUs() {
           Prečo <span>Východ Digital</span>?
         </h2>
         <p className={styles.subtitle}>
-          Sme začínajúca digitálna agentúra z východného Slovenska, ktorá tvorí{" "}
-          <span>moderné webové riešenia</span> pre firmy a podnikateľov. Každý
-          projekt navrhujeme <span>individuálne</span> — s dôrazom na dizajn,
-          rýchlosť, výkon a <span>reálne výsledky</span>.
+          Vo Východ Digital veríme, že <span> webstránka</span> má prinášať{" "}
+          <span>výsledky</span>. Preto vytvárame <span>rýchle</span>,{" "}
+          <span>moderné</span> a <span>premyslené</span> weby, ktoré pomáhajú
+          firmám <span>získavať zákazníkov</span>, <span>budovať dôveru</span> a{" "}
+          <span>profesionálnu</span> prezentáciu online.
           <br />
           <br />
-          Veríme, že dobrý web nie je len pekný, ale <span>predáva</span>,
-          funguje a buduje <span>dôveru</span>. Preto ku každému klientovi
-          pristupujeme osobne a s maximálnou starostlivosťou.
+          Každý projekt riešime <span>individuálne</span> a navrhujeme ho s
+          dôrazom na obchodný cieľ klienta.
         </p>
         <div className={styles.grid}>
           {reasons.map((reason) => (

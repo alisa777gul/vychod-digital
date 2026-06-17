@@ -4,25 +4,31 @@
   font-synthesis: none;
   text-rendering: optimizeLegibility;
 }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Courier New", monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 html,
 body {
   height: 100%;
   margin: 0;
   padding: 0;
-
-  scroll-behavior: auto;
-}
-* {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-#root {
-  min-height: 100vh;
+  scroll-behavior: smooth;
 }
 
 body {
-  background: #faf9f5; /* без градиентов */
+  background: #faf9f5;
   color: #111;
+}
+
+#root {
+  min-height: 100vh;
 }
 
 .app {
@@ -30,36 +36,25 @@ body {
   display: flex;
   flex-direction: column;
 }
+
 main {
   flex-grow: 1;
 }
 
-/* RESET */
-* {
-  font-family: "Courier New", monospace;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-  background: linear-gradient(180deg, #fff, #faf9f5, #fff);
-}
 ul {
-  padding: 0;
   list-style: none;
 }
 
 p {
   color: #111;
-
   font-weight: 600;
 }
+
 textarea {
   resize: none;
+}
+
+img {
+  width: 100%;
+  display: block;
 }
