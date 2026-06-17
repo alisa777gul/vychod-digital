@@ -11,13 +11,4 @@ export const projects = [
     image2x: project1_800,
     link: "https://happy-shark.pp.ua/",
   },
-  {
-    id: 2,
-    title: "Happy Shark",
-    description:
-      "Landing page navrhnutá s cieľom zvýšiť konverzie a podporiť predaj produktu online.",
-    image: project1_600,
-    image2x: project1_800,
-    link: "https://happy-shark.pp.ua/",
-  },
 ];

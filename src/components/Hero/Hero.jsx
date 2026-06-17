@@ -1,7 +1,7 @@
 import Button from "../Button/Button";
 import styles from "./Hero.module.css";
 import { scrollToSection } from "../../utils/scrollToSection";
-import heroImage from "../../assets/heroImage.webp";
+import heroImage from "../../assets/heroImage.png";
 export default function Hero() {
   return (
     <section className={styles.hero} id="home">

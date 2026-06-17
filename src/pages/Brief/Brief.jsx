@@ -34,9 +34,6 @@ export default function Brief() {
     });
   }, []);
 
-  // =========================
-  // 💾 AUTO SAVE
-  // =========================
   const saveDraft = () => {
     const data = new FormData(formRef.current);
 
@@ -60,9 +57,6 @@ export default function Brief() {
     localStorage.setItem("brief-draft", JSON.stringify(formData));
   };
 
-  // =========================
-  // 🚀 SEND FORM
-  // =========================
   const sendForm = async (e) => {
     e.preventDefault();
 
@@ -104,7 +98,6 @@ export default function Brief() {
       setStatus("success");
       formRef.current.reset();
 
-      // 🔥 clear draft after success
       localStorage.removeItem("brief-draft");
     } catch (err) {
       setStatus("error");

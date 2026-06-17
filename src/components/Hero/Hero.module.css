@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-top: 20px;
 }
 
 .heroInner {
@@ -58,8 +59,10 @@
 }
 
 @media (min-width: 768px) {
+  .hero {
+    padding-top: 24px;
+  }
   .heroInner {
-    /* flex-direction: row; */
     gap: 40px;
     align-items: center;
   }
@@ -78,6 +81,9 @@
 }
 
 @media (min-width: 1024px) {
+  .hero {
+    padding-top: 28px;
+  }
   .heroInner {
     gap: 56px;
     flex-direction: row;

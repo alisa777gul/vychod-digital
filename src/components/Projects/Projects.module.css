@@ -132,6 +132,7 @@
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  font-weight: 500;
 }
 
 .content a {
@@ -176,7 +177,7 @@
 @media (min-width: 1024px) {
   .list {
     grid-template-columns: repeat(3, minmax(280px, 380px));
-    justify-content: center;
+    justify-self: center;
   }
   .content h3 {
     font-size: 22px;
