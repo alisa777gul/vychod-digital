@@ -1,7 +1,7 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { useLayoutEffect } from "react";
-
+import { useEffect } from "react";
 import Home from "./pages/Home/Home";
 import Brief from "./pages/Brief/Brief";
 
@@ -36,7 +36,11 @@ function Page({ children }) {
 
 export default function App() {
   const location = useLocation();
-
+  useEffect(() => {
+    if (window.fbq) {
+      window.fbq("track", "PageView");
+    }
+  }, [location.pathname]);
   return (
     <>
       <ScrollToTop />
