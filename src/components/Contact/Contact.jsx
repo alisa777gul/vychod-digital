@@ -41,7 +41,9 @@ const Contact = () => {
       });
 
       if (!response.ok) throw new Error();
-
+      if (window.fbq) {
+        window.fbq("track", "Lead");
+      }
       setStatus("success");
       form.current.reset();
     } catch (error) {
@@ -85,7 +87,15 @@ const Contact = () => {
             <input name="email" type="email" placeholder="Email" />
             <textarea name="message" rows="5" placeholder="Správa" />
 
-            <button type="submit" disabled={loading}>
+            <button
+              type="submit"
+              disabled={loading}
+              onClick={() => {
+                if (window.fbq) {
+                  window.fbq("track", "Contact");
+                }
+              }}
+            >
               {loading ? "Odosielam..." : "Odoslať"}
             </button>
 
