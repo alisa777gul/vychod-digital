@@ -175,10 +175,10 @@
 }
 
 @media (min-width: 1024px) {
-  .list {
+  /* .list {
     grid-template-columns: repeat(3, minmax(280px, 380px));
     justify-self: center;
-  }
+  } */
   .content h3 {
     font-size: 22px;
   }
