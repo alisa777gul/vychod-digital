@@ -41,12 +41,6 @@ main {
   flex-grow: 1;
 }
 
-@media (max-width: 1023px) {
-  main {
-    padding-bottom: 70px;
-  }
-}
-
 ul {
   list-style: none;
 }

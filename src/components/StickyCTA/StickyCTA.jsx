@@ -21,26 +21,28 @@ export default function StickyCTA() {
   }, []);
 
   return (
-    <div
-      className={`${styles.bar} ${visible ? styles.show : ""}`}
-      role="region"
-      aria-label="Rýchla akcia"
+    <button
+      type="button"
+      data-testid="sticky-cta-button"
+      aria-label="Napíšte nám"
+      onClick={() => scrollToSection("#kontakt")}
+      className={`${styles.fab} ${visible ? styles.show : ""}`}
     >
-      <div className={styles.inner}>
-        <span className={styles.icon} aria-hidden="true">✦</span>
-        <div className={styles.copy}>
-          <strong>Bezplatný návrh</strong>
-          <span>Odpoveď do 24 hodín</span>
-        </div>
-        <button
-          type="button"
-          data-testid="sticky-cta-button"
-          onClick={() => scrollToSection("#kontakt")}
-          className={styles.btn}
-        >
-          Napíšte nám
-        </button>
-      </div>
-    </div>
+      <span className={styles.tooltip}>Napíšte nám</span>
+      <svg
+        className={styles.icon}
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M4 5h16v14H4z" />
+        <path d="M4 5l8 7 8-7" />
+      </svg>
+      <span className={styles.dot} aria-hidden="true" />
+    </button>
   );
 }
