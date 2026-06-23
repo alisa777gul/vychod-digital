@@ -4,6 +4,8 @@ import { useLayoutEffect } from "react";
 import { useEffect } from "react";
 import Home from "./pages/Home/Home";
 import Brief from "./pages/Brief/Brief";
+import Legal from "./pages/Legal/Legal";
+import CookieConsent from "./components/CookieConsent/CookieConsent";
 
 /* 🔥 always start top */
 function ScrollToTop() {
@@ -63,8 +65,18 @@ export default function App() {
               </Page>
             }
           />
+          <Route
+            path="/:slug"
+            element={
+              <Page>
+                <Legal />
+              </Page>
+            }
+          />
         </Routes>
       </AnimatePresence>
+
+      <CookieConsent />
     </>
   );
 }

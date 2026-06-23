@@ -1,5 +1,5 @@
 import styles from "./Footer.module.css";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import { scrollToSection } from "../../utils/scrollToSection";
 import instagramIcon from "../../assets/instagram-logo.svg?react";
 
@@ -152,21 +152,21 @@ export default function Footer() {
           </p>
           <ul className={styles.legal}>
             <li>
-              <a href="#" onClick={(e) => e.preventDefault()}>
+              <Link to="/ochrana-udajov" data-testid="legal-privacy">
                 Ochrana údajov
-              </a>
+              </Link>
             </li>
             <li aria-hidden="true" className={styles.sep}>·</li>
             <li>
-              <a href="#" onClick={(e) => e.preventDefault()}>
+              <Link to="/cookies" data-testid="legal-cookies">
                 Cookies
-              </a>
+              </Link>
             </li>
             <li aria-hidden="true" className={styles.sep}>·</li>
             <li>
-              <a href="#" onClick={(e) => e.preventDefault()}>
+              <Link to="/obchodne-podmienky" data-testid="legal-terms">
                 Obchodné podmienky
-              </a>
+              </Link>
             </li>
           </ul>
           <p className={styles.signature}>
