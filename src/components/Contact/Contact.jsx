@@ -2,6 +2,7 @@
 import { useRef, useState } from "react";
 import css from "./Contact.module.css";
 import { Link } from "react-router-dom";
+import { track } from "../../utils/analytics";
 
 const Contact = () => {
   const form = useRef();
@@ -41,9 +42,7 @@ const Contact = () => {
       });
 
       if (!response.ok) throw new Error();
-      if (window.fbq) {
-        window.fbq("track", "Lead");
-      }
+      track("Lead");
       setStatus("success");
       form.current.reset();
     } catch (error) {
@@ -90,11 +89,7 @@ const Contact = () => {
             <button
               type="submit"
               disabled={loading}
-              onClick={() => {
-                if (window.fbq) {
-                  window.fbq("track", "Contact");
-                }
-              }}
+              onClick={() => track("Contact")}
             >
               {loading ? "Odosielam..." : "Odoslať"}
             </button>

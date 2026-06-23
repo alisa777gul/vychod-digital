@@ -54,13 +54,13 @@
   text-align: left;
   transform: rotate(calc(var(--i, 0) * 0.5deg - 0.7deg));
   transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
+    transform 0.55s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)),
+    box-shadow 0.55s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1));
 }
 
 .step:hover {
-  transform: rotate(0) translateY(-4px);
-  box-shadow: 7px 7px 0 #df0014;
+  transform: rotate(0) translateY(-6px);
+  box-shadow: 9px 9px 0 #df0014;
 }
 
 .num {

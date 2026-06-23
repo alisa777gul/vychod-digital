@@ -184,8 +184,8 @@
   border: 0;
   cursor: pointer;
   transition:
-    color 0.2s ease,
-    transform 0.2s ease;
+    color 0.4s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)),
+    transform 0.45s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1));
 }
 
 .nav a::after,
@@ -199,7 +199,7 @@
   background: #df0014;
   transform: scaleX(0) rotate(-1deg);
   transform-origin: left;
-  transition: transform 0.2s ease;
+  transition: transform 0.5s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1));
 }
 
 .nav a:hover,
