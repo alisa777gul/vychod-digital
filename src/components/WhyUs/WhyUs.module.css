@@ -4,10 +4,10 @@
 
 .subtitle {
   max-width: 820px;
-  margin: 0 auto 40px;
+  margin: 0 auto 36px;
   text-align: center;
 
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.7;
   color: black;
 
@@ -33,31 +33,39 @@
   border-radius: 2px;
 }
 
+/* === GRID === */
 .grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 18px;
+  gap: 14px;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
+/* === CARD === */
 .reason {
-  color: #fff;
-  display: flex;
-  gap: 12px;
-  align-items: flex-start;
-
-  background: #000;
-  padding: 16px 14px;
-
   position: relative;
-  overflow: hidden;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 14px;
 
-  border-radius: 16px;
+  padding: 16px 18px;
+
+  background: #111;
+  color: #fff;
+
+  border: 2px solid #111;
+
+  overflow: hidden;
 
   transition:
     transform 0.25s ease,
-    box-shadow 0.25s ease;
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
 }
 
+/* light diagonal pattern */
 .reason::before {
   content: "";
   position: absolute;
@@ -66,85 +74,141 @@
 
   background: repeating-linear-gradient(
     135deg,
-    rgba(223, 0, 20, 0.12) 0px,
-    rgba(223, 0, 20, 0.12) 2px,
-    transparent 2px,
-    transparent 16px
+    rgba(223, 0, 20, 0.08) 0px,
+    rgba(223, 0, 20, 0.08) 1px,
+    transparent 1px,
+    transparent 14px
   );
-
-  opacity: 0.9;
-  transform: skew(-4deg);
+  pointer-events: none;
 }
 
-/* контент поверх */
 .reason > * {
   position: relative;
   z-index: 2;
 }
 
-/* лёгкий, ЕДИНЫЙ hover (без разнобоя) */
-.reason:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
-}
-
-/* number */
-.reason span {
+/* red corner accent */
+.corner {
+  position: absolute;
+  top: -14px;
+  right: -14px;
   width: 28px;
   height: 28px;
+  background: #df0014;
+  transform: rotate(45deg);
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
 
+.reason:hover {
+  transform: translateY(-3px);
+  box-shadow: 5px 5px 0 #df0014;
+  border-color: #df0014;
+}
+
+.reason:hover .corner {
+  transform: rotate(45deg) scale(1.4);
+}
+
+/* number index */
+.index {
   display: grid;
   place-items: center;
 
-  flex: 0 0 28px;
+  min-width: 44px;
+  height: 44px;
+  padding: 0 6px;
+
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
 
   color: #df0014;
-  border: 2px solid #df0014;
-  border-radius: 50%;
-  background: transparent;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1.5px solid #df0014;
+
+  font-variant-numeric: tabular-nums;
 }
 
-/* text */
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
 .reason h3 {
-  margin: 0 0 6px;
-  font-size: 16px;
-  font-weight: 700;
+  margin: 0;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  color: #fff;
 }
 
 .reason p {
   margin: 0;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.5;
-  color: rgb(226, 226, 226);
+  color: rgba(255, 255, 255, 0.78);
+  font-weight: 500;
 }
 
-/* responsive */
-@media (min-width: 768px) {
+/* === TABLET === */
+@media (min-width: 640px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .reason h3 {
-    font-size: 20px;
-  }
-
-  .reason p {
-    font-size: 18px;
-  }
-  .subtitle {
-    font-size: 20px;
+    gap: 16px;
   }
 }
 
-@media (min-width: 1024px) {
-  .reason h3 {
-    font-size: 22px;
+@media (min-width: 768px) {
+  .subtitle {
+    font-size: 18px;
   }
-
+  .reason {
+    padding: 20px 22px;
+    gap: 16px;
+  }
+  .index {
+    min-width: 52px;
+    height: 52px;
+    font-size: 19px;
+  }
+  .reason h3 {
+    font-size: 18px;
+  }
   .reason p {
-    font-size: 20px;
+    font-size: 15px;
+  }
+}
+
+/* === DESKTOP === */
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+  .reason {
+    grid-template-columns: 1fr;
+    align-items: flex-start;
+    padding: 22px 20px 20px;
+    gap: 14px;
+  }
+  .index {
+    min-width: 48px;
+    height: 48px;
+    width: fit-content;
+    font-size: 17px;
   }
   .subtitle {
-    font-size: 22px;
+    font-size: 19px;
+  }
+  .reason h3 {
+    font-size: 18px;
+  }
+  .reason p {
+    font-size: 14px;
+    line-height: 1.55;
   }
 }

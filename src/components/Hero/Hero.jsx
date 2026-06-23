@@ -8,6 +8,11 @@ export default function Hero() {
       <div className="container">
         <div className={styles.heroInner}>
           <div className={styles.content}>
+            <span className={styles.badge} data-testid="hero-availability">
+              <span className={styles.dot} aria-hidden="true" />
+              Aktuálne prijímame 3 projekty mesačne
+            </span>
+
             <h1>
               Vaša webstránka
               <br />
@@ -24,6 +29,7 @@ export default function Hero() {
             <div className={styles.actions}>
               <Button
                 href="#kontakt"
+                data-testid="hero-cta-primary"
                 onClick={(event) => {
                   event.preventDefault();
                   scrollToSection("#kontakt");
@@ -35,6 +41,7 @@ export default function Hero() {
               <Button
                 href="#projekty"
                 variant="outline"
+                data-testid="hero-cta-secondary"
                 onClick={(event) => {
                   event.preventDefault();
                   scrollToSection("#projekty");
@@ -43,6 +50,21 @@ export default function Hero() {
                 Pozrieť realizácie
               </Button>
             </div>
+
+            <ul className={styles.trust} aria-label="Výhody">
+              <li>
+                <span className={styles.tick} aria-hidden="true">✓</span>
+                Bez záväzku
+              </li>
+              <li>
+                <span className={styles.tick} aria-hidden="true">✓</span>
+                Odpoveď do 24 hod
+              </li>
+              <li>
+                <span className={styles.tick} aria-hidden="true">✓</span>
+                Cena vopred
+              </li>
+            </ul>
           </div>
 
           <div className={styles.visual}>

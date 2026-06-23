@@ -31,10 +31,11 @@ export default function Footer() {
           <div className={styles.links}>
             <h4>Navigácia</h4>
 
-            <a onClick={() => goTo("#home")}>Domov</a>
             <a onClick={() => goTo("#sluzby")}>Služby</a>
-            <a onClick={() => goTo("#o-nas")}>O nás</a>
+            <a onClick={() => goTo("#proces")}>Proces</a>
             <a onClick={() => goTo("#projekty")}>Projekty</a>
+            <a onClick={() => goTo("#cennik")}>Cenník</a>
+            <a onClick={() => goTo("#faq")}>FAQ</a>
             <a onClick={() => goTo("#kontakt")}>Kontakt</a>
           </div>
         )}

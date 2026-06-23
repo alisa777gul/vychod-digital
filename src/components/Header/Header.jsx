@@ -5,11 +5,11 @@ import { scrollToSection } from "../../utils/scrollToSection";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const navItems = [
-  { label: "Domov", href: "#home" },
   { label: "Služby", href: "#sluzby" },
-  { label: "O nás", href: "#o-nas" },
+  { label: "Proces", href: "#proces" },
   { label: "Projekty", href: "#projekty" },
-  { label: "Kontakt", href: "#kontakt" },
+  { label: "Cenník", href: "#cennik" },
+  { label: "FAQ", href: "#faq" },
 ];
 
 export default function Header() {

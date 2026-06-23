@@ -20,14 +20,16 @@ export default function WhyUs() {
           dôrazom na obchodný cieľ klienta.
         </p>
         <div className={styles.grid}>
-          {reasons.map((reason) => (
+          {reasons.map((reason, i) => (
             <article className={styles.reason} key={reason.title}>
-              <span>✓</span>
-
-              <div>
+              <div className={styles.index}>
+                {String(i + 1).padStart(2, "0")}
+              </div>
+              <div className={styles.body}>
                 <h3>{reason.title}</h3>
                 <p>{reason.text}</p>
               </div>
+              <span className={styles.corner} aria-hidden="true" />
             </article>
           ))}
         </div>
