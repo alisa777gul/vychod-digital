@@ -5,79 +5,141 @@
   bottom: 12px;
   z-index: 90;
 
-  background: #111;
-  color: #fff;
-  border: 2px solid #df0014;
+  background: #faf9f5;
+  color: #111;
+  border: 2px solid #111;
   box-shadow: 5px 5px 0 #df0014;
 
   opacity: 0;
   pointer-events: none;
-  transform: translateY(20px);
+  transform: translateY(20px) rotate(-0.6deg);
   transition:
     opacity 0.3s ease,
     transform 0.3s ease;
 }
 
+/* subtle paper grain */
+.bar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      circle at 20% 30%,
+      rgba(17, 17, 17, 0.04) 0 1px,
+      transparent 1px
+    ),
+    radial-gradient(
+      circle at 70% 60%,
+      rgba(17, 17, 17, 0.035) 0 1px,
+      transparent 1px
+    );
+  background-size:
+    18px 18px,
+    22px 22px;
+  opacity: 0.7;
+}
+
 .show {
   opacity: 1;
   pointer-events: auto;
-  transform: translateY(0);
+  transform: translateY(0) rotate(-0.6deg);
 }
 
 .inner {
+  position: relative;
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: 10px;
   padding: 10px 12px;
 }
 
+.icon {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  background: #111;
+  color: #fff;
+  border: 2px solid #df0014;
+  font-size: 16px;
+  font-weight: 900;
+  transform: rotate(-4deg);
+  box-shadow: 2px 2px 0 #df0014;
+  letter-spacing: -0.04em;
+}
+
 .copy {
   display: flex;
   flex-direction: column;
-  line-height: 1.2;
+  line-height: 1.15;
+  min-width: 0;
 }
 
 .copy strong {
   font-size: 14px;
   font-weight: 900;
-  color: #fff;
-  letter-spacing: 0.02em;
+  color: #111;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .copy span {
-  font-size: 11px;
-  font-weight: 700;
+  font-size: 10.5px;
+  font-weight: 800;
   color: #df0014;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .btn {
+  position: relative;
   background: #df0014;
   color: #fff;
   font: inherit;
   font-weight: 900;
   font-size: 13px;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   padding: 10px 14px;
-  border: 2px solid #fff;
-  box-shadow: 3px 3px 0 #fff;
+  border: 2px solid #111;
+  box-shadow: 3px 3px 0 #111;
   cursor: pointer;
   transition:
     transform 0.18s ease,
     box-shadow 0.18s ease;
+  white-space: nowrap;
 }
 
 .btn:hover {
   transform: translate(-2px, -2px);
-  box-shadow: 5px 5px 0 #fff;
+  box-shadow: 5px 5px 0 #111;
 }
 
 .btn:active {
   transform: translate(1px, 1px);
-  box-shadow: 1px 1px 0 #fff;
+  box-shadow: 1px 1px 0 #111;
+}
+
+@media (min-width: 480px) {
+  .copy strong {
+    font-size: 15px;
+  }
+  .copy span {
+    font-size: 11px;
+  }
+  .btn {
+    font-size: 14px;
+    padding: 11px 16px;
+  }
 }
 
 @media (min-width: 1024px) {

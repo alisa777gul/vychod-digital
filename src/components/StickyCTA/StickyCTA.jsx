@@ -27,6 +27,7 @@ export default function StickyCTA() {
       aria-label="Rýchla akcia"
     >
       <div className={styles.inner}>
+        <span className={styles.icon} aria-hidden="true">✦</span>
         <div className={styles.copy}>
           <strong>Bezplatný návrh</strong>
           <span>Odpoveď do 24 hodín</span>
