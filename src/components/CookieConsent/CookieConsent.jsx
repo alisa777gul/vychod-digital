@@ -1,25 +1,24 @@
 import { useEffect, useState } from "react";
 import styles from "./CookieConsent.module.css";
 import { Link } from "react-router-dom";
-
-const STORAGE_KEY = "vd-cookie-consent";
+import { getConsent, setConsent } from "../../utils/analytics";
 
 export default function CookieConsent() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const choice = localStorage.getItem(STORAGE_KEY);
-    if (!choice) {
+    if (!getConsent()) {
       const t = setTimeout(() => setVisible(true), 800);
       return () => clearTimeout(t);
     }
+
+    const onOpen = () => setVisible(true);
+    window.addEventListener("vd:open-cookies", onOpen);
+    return () => window.removeEventListener("vd:open-cookies", onOpen);
   }, []);
 
   const save = (value) => {
-    localStorage.setItem(
-      STORAGE_KEY,
-      JSON.stringify({ value, at: new Date().toISOString() }),
-    );
+    setConsent(value);
     setVisible(false);
   };
 

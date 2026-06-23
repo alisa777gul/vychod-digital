@@ -6,6 +6,7 @@ import Home from "./pages/Home/Home";
 import Brief from "./pages/Brief/Brief";
 import Legal from "./pages/Legal/Legal";
 import CookieConsent from "./components/CookieConsent/CookieConsent";
+import { initAnalytics, trackPageView } from "./utils/analytics";
 
 /* 🔥 always start top */
 function ScrollToTop() {
@@ -38,10 +39,14 @@ function Page({ children }) {
 
 export default function App() {
   const location = useLocation();
+
+  // boot: if user previously accepted "all", load Meta Pixel
   useEffect(() => {
-    if (window.fbq) {
-      window.fbq("track", "PageView");
-    }
+    initAnalytics();
+  }, []);
+
+  useEffect(() => {
+    trackPageView();
   }, [location.pathname]);
   return (
     <>

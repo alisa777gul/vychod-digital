@@ -168,6 +168,19 @@ export default function Footer() {
                 Obchodné podmienky
               </Link>
             </li>
+            <li aria-hidden="true" className={styles.sep}>·</li>
+            <li>
+              <button
+                type="button"
+                data-testid="cookie-settings"
+                className={styles.legalBtn}
+                onClick={() =>
+                  window.dispatchEvent(new CustomEvent("vd:open-cookies"))
+                }
+              >
+                Nastavenia cookies
+              </button>
+            </li>
           </ul>
           <p className={styles.signature}>
             Made with <span aria-hidden="true">✦</span> na východe Slovenska
