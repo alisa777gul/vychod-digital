@@ -11,8 +11,8 @@
   text-decoration: none;
   transform: translateY(0);
   transition:
-    transform 0.18s ease,
-    filter 0.18s ease;
+    transform 0.45s var(--ease-spring, cubic-bezier(0.34, 1.3, 0.5, 1)),
+    filter 0.4s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1));
 }
 
 .button span {
@@ -33,8 +33,8 @@
   width: 100%;
   height: 100%;
   transition:
-    transform 0.18s ease,
-    filter 0.18s ease;
+    transform 0.5s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)),
+    filter 0.5s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1));
 }
 
 .brushButton {
