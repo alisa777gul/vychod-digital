@@ -53,7 +53,6 @@ export default function Footer() {
           {/* BRAND */}
           <div className={styles.col}>
             <div className={styles.logoWrap}>
-              <img src="/logo.svg" alt="Východ Digital" className={styles.logo} />
               <div>
                 <p className={styles.brandTitle}>
                   Východ <span>Digital</span>
