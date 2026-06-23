@@ -124,6 +124,20 @@
 
   text-decoration: none;
   color: white;
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.instagram:hover {
+  color: #df0014;
+  transform: translateX(0) !important;
+}
+
+.instagram:hover .icon {
+  filter: brightness(0) saturate(100%) invert(15%) sepia(94%)
+    saturate(7470%) hue-rotate(351deg) brightness(89%) contrast(118%);
+  transform: rotate(-8deg) scale(1.15);
 }
 
 .icon {
@@ -131,6 +145,9 @@
   height: 18px;
   flex-shrink: 0;
   filter: brightness(0) invert(1);
+  transition:
+    filter 0.25s ease,
+    transform 0.25s ease;
 }
 
 @media (min-width: 768px) {
