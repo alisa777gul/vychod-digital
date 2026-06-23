@@ -10,7 +10,7 @@ export default function Hero() {
           <div className={styles.content}>
             <span className={styles.badge} data-testid="hero-availability">
               <span className={styles.dot} aria-hidden="true" />
-              Prijímame nové projekty — Q1 / Q2
+              Aktuálne prijímame 3 projekty mesačne
             </span>
 
             <h1>
