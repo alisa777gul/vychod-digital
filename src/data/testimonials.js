@@ -1,26 +1,18 @@
 export const testimonials = [
   {
     id: 1,
-    name: "Martin K.",
+    name: "Kateryna M.",
     role: "Majiteľ, Happy Shark",
-    text: "Web nám priniesol prvé objednávky už v druhom týždni po spustení. Profesionálny prístup od prvej konzultácie až po nasadenie.",
+    text: "Po spustení webu sme začali dostávať prvé dopyty už v priebehu pár týždňov. Oceňujem hlavne rýchlu komunikáciu a ochotu upraviť detaily podľa spätnej väzby.",
     rating: 5,
-    initials: "MK",
+    initials: "KM",
   },
   {
     id: 2,
     name: "Lenka B.",
     role: "Marketing, LumenFrame",
-    text: "Návrh sedel presne, žiadne zbytočné prerábky. Konečne web, ktorý reálne predáva – nielen pekne vyzerá.",
+    text: "Spolupráca bola plynulá, návrh webu sedel od začiatku. Upravili sme len pár drobností a výsledok zodpovedá tomu, čo sme potrebovali.",
     rating: 5,
     initials: "LB",
-  },
-  {
-    id: 3,
-    name: "Peter Š.",
-    role: "Freelancer",
-    text: "Komunikácia rýchla, výsledok ešte rýchlejší. Stránku som dostal skôr, ako bolo dohodnuté, a doteraz funguje bez chyby.",
-    rating: 5,
-    initials: "PŠ",
   },
 ];

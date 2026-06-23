@@ -9,7 +9,7 @@ export const processSteps = [
     num: "02",
     title: "Stratégia & návrh",
     text: "Pripravíme štruktúru, texty a vizuálny koncept zameraný na konverziu.",
-    time: "2 – 4 dni",
+    time: "1 – 3 dni",
   },
   {
     num: "03",
